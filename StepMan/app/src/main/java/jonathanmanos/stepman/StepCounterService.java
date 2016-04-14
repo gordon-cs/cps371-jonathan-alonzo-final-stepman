@@ -1,46 +1,33 @@
 package jonathanmanos.stepman;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Bundle;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Looper;
 import android.os.PowerManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-public class ProfileActivity1 extends AppCompatActivity implements SensorEventListener {
+/**
+ * Created by Jonny on 4/14/2016.
+ */
+public class StepCounterService extends Service implements SensorEventListener {
 
     private String name;
     public String firstLine;
@@ -50,53 +37,19 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
     private SharedPreferences mPrefs;
     private int stepCounter;
     private int levelCounter;
-    private Intent intent;
 
     private Sensor mStepCounterSensor;
 
     private Sensor mStepDetectorSensor;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        profile = this;
-        intent = new Intent(this, StepCounterService.class);
-
+    public void onCreate(){
+        super.onCreate();
         mPrefs = getSharedPreferences("label", 0);
         name = mPrefs.getString("tag", "");
         stepCounter = mPrefs.getInt("steps", 0);
         levelCounter = mPrefs.getInt("level", 1);
         System.out.println(stepCounter);
-
-        try{
-            LoginActivity.logIn.finish();
-        }
-        catch(NullPointerException e){
-
-        }
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile1);
-
-        TextView myLevelView = (TextView) findViewById(R.id.mylevelview);
-
-        myLevelView.setText("Level: " + levelCounter);
-
-        TextView myStepView = (TextView) findViewById(R.id.mystepview);
-
-        myStepView.setText("Steps: " + stepCounter + "\n");
-
-        TextView myTextView = (TextView) findViewById(R.id.mytextview);
-
-        myTextView.setText("Welcome, " + name + ".");
-
-        new Puller().execute("http://qz.com/298042/the-bizarre-multi-billion-dollar-industry-of-american-fantasy-sports/");
-
-        //TextView internetTextView = (TextView) findViewById(R.id.internetTextView);
-
-        //internetTextView.setText("First line of randow website using httpurlconnection is: " + firstLine + " .");
-
-
 
         mSensorManager = (SensorManager)
                 getSystemService(Context.SENSOR_SERVICE);
@@ -104,12 +57,34 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
                 .getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         mStepDetectorSensor = mSensorManager
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+    }
+
+    @Override
+    public void onDestroy(){
+
+        mSensorManager.unregisterListener(this, mStepCounterSensor);
+        mSensorManager.unregisterListener(this, mStepDetectorSensor);
+        super.onDestroy();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId){
+
+        mSensorManager.registerListener(this, mStepCounterSensor,
+                SensorManager.SENSOR_DELAY_FASTEST);
+
+        mSensorManager.registerListener(this, mStepDetectorSensor,
+                SensorManager.SENSOR_DELAY_FASTEST);
+
+        return super.onStartCommand(intent, flags, startId);
 
     }
 
-    public void setFirstLine(String value){
-        this.firstLine = value;
+    @Override
+    public IBinder onBind(Intent arg0){
+        return null;
     }
+
 
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
@@ -124,9 +99,6 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
             // For test only. Only allowed value is 1.0 i.e. for step taken
 
             stepCounter++;
-            TextView myStepView = (TextView) findViewById(R.id.mystepview);
-
-            myStepView.setText("Steps: " + stepCounter + "\n");
 
             SharedPreferences.Editor mEditor = mPrefs.edit();
             mEditor.putInt("steps", stepCounter).commit();
@@ -151,7 +123,7 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
                                 .setSubText(contentSubText)
                                 .setDefaults(-1)
                                 .setTicker(title)
-                                ;
+                        ;
                 // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(this, ProfileActivity1.class);
 
@@ -202,9 +174,6 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
 
             }
 
-            TextView myLevelView = (TextView) findViewById(R.id.mylevelview);
-
-            myLevelView.setText("Level: " + levelCounter);
         }
     }
 
@@ -213,32 +182,5 @@ public class ProfileActivity1 extends AppCompatActivity implements SensorEventLi
 
     }
 
-    protected void onResume() {
-
-        super.onResume();
-
-        stopService(intent);
-
-        mSensorManager.registerListener(this, mStepCounterSensor,
-                SensorManager.SENSOR_DELAY_FASTEST);
-
-        mSensorManager.registerListener(this, mStepDetectorSensor,
-                SensorManager.SENSOR_DELAY_FASTEST);
-
-        //TextView internetTextView = (TextView) findViewById(R.id.internetTextView);
-
-        //internetTextView.setText("First line of randow website using httpurlconnection is: " + firstLine + " .");
-
-    }
-
-    protected void onStop() {
-
-        super.onStop();
-
-        mSensorManager.unregisterListener(this, mStepCounterSensor);
-        mSensorManager.unregisterListener(this, mStepDetectorSensor);
-
-        startService(intent);
-    }
 
 }
