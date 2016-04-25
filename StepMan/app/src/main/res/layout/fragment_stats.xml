@@ -1,0 +1,321 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jonathanmanos.stepman.MainTabbedActivity$PlaceholderFragment">
+
+    <GridLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10pt">
+
+            <TextView
+                android:id="@+id/mystatlevelview"
+                android:text="Level: 1"
+                android:textSize="20pt"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/statPoints"
+                android:text="Pts: "
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="HP:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statHP"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+            <Button
+                android:id="@+id/buttonHP"
+                android:text="+"
+                android:textColor="@color/black"
+                android:background="@drawable/button"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="onClickAddHP"
+                android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="Strength:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statStrength"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonStrength"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddStrength"
+                    android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="Defense:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statDefense"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonDefense"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddDefense"
+                    android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="Magic:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statMagic"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonMagic"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddMagic"
+                    android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="Magic Def:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statMagicDef"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonMagicDef"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddMagicDef"
+                    android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
+
+            <TextView
+                android:text="Speed:"
+                android:textSize="12pt"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/statSpeed"
+                android:text="10"
+                android:textSize="12pt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right" />
+
+            <RelativeLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonSpeed"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddSpeed"
+                    android:enabled="false" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10pt">
+
+            <Button
+                android:text="Reset Points"
+                android:background="@drawable/reset_button2"
+                android:textSize="12pt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="resetStatPoints"
+                android:enabled="true" />
+
+        </LinearLayout>
+
+
+
+
+    </GridLayout>
+
+</RelativeLayout>

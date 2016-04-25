@@ -35,8 +35,13 @@ public class StepCounterService extends Service implements SensorEventListener {
     public static Activity profile;
     private SensorManager mSensorManager;
     private SharedPreferences mPrefs;
-    private int stepCounter;
-    private int levelCounter;
+
+    private static int steps;
+    private static int stepsAtLevelUp;
+    private static int level;
+    private static int points;
+    private static String difficulty;
+    private static int difficultyValue;
 
     private Sensor mStepCounterSensor;
 
@@ -47,9 +52,15 @@ public class StepCounterService extends Service implements SensorEventListener {
         super.onCreate();
         mPrefs = getSharedPreferences("label", 0);
         name = mPrefs.getString("tag", "");
-        stepCounter = mPrefs.getInt("steps", 0);
-        levelCounter = mPrefs.getInt("level", 1);
-        System.out.println(stepCounter);
+        steps = mPrefs.getInt("steps", 0);
+        stepsAtLevelUp = mPrefs.getInt("stepsAtLevel", 0);
+        level = mPrefs.getInt("level", 1);
+        points = mPrefs.getInt("points",0);
+        difficulty = mPrefs.getString("difficulty","");
+        difficultyValue = mPrefs.getInt("difficultyValue",10);
+        difficultyValue = getDifficultyValue();
+
+        System.out.println("Background service now running!!!!!!!!!!!!!!!!!");
 
         mSensorManager = (SensorManager)
                 getSystemService(Context.SENSOR_SERVICE);
@@ -98,20 +109,34 @@ public class StepCounterService extends Service implements SensorEventListener {
         if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test only. Only allowed value is 1.0 i.e. for step taken
 
-            stepCounter++;
+            steps++;
+            difficultyValue = getDifficultyValue();
 
             SharedPreferences.Editor mEditor = mPrefs.edit();
-            mEditor.putInt("steps", stepCounter).commit();
+            mEditor.putInt("steps", steps);
+            mEditor.putInt("difficultyValue", difficultyValue);
+            mEditor.apply();
 
-            if(stepCounter % 20 == 0) {
-                levelCounter++;
-                mEditor.putInt("level", levelCounter).commit();
+
+
+            System.out.println("difficulty value is: " +difficultyValue);
+
+            if(steps == difficultyValue) {
+                stepsAtLevelUp = steps;
+                level++;
+                points += 5;
+                difficultyValue = getDifficultyValue();
+                mEditor.putInt("level", level);
+                mEditor.putInt("points", points);
+                mEditor.putInt("stepsAtLevelUp", stepsAtLevelUp);
+                mEditor.putInt("difficultyValue", difficultyValue);
+                mEditor.apply();
 
                 Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.stepmanrunning);
                 //Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 CharSequence title = "StepMan Level Up!";
-                CharSequence contentText = "You just rose to Level " + levelCounter + "!";
-                CharSequence contentSubText = "Upgrade Your Stats!";
+                CharSequence contentText = "You just rose to Level " + level + "!";
+                CharSequence contentSubText = "You have " + points + " points to spend!";
 
                 NotificationCompat.Builder mBuilder =
                         (NotificationCompat.Builder) new NotificationCompat.Builder(this)
@@ -122,19 +147,18 @@ public class StepCounterService extends Service implements SensorEventListener {
                                 .setContentText(contentText)
                                 .setSubText(contentSubText)
                                 .setDefaults(-1)
-                                .setTicker(title)
                         ;
                 // Creates an explicit intent for an Activity in your app
-                Intent resultIntent = new Intent(this, ProfileActivity1.class);
+                Intent resultIntent = new Intent(this, MainTabbedActivity.class);
 
-                int mId = 1;
+
                 // The stack builder object will contain an artificial back stack for the
                 // started Activity.
                 // This ensures that navigating backward from the Activity leads out of
                 // your application to the Home screen.
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
                 // Adds the back stack for the Intent (but not the Intent itself)
-                stackBuilder.addParentStack(ProfileActivity1.class);
+                stackBuilder.addParentStack(MainTabbedActivity.class);
                 // Adds the Intent that starts the Activity to the top of the stack
                 stackBuilder.addNextIntent(resultIntent);
                 PendingIntent resultPendingIntent =
@@ -146,11 +170,13 @@ public class StepCounterService extends Service implements SensorEventListener {
                 NotificationManager mNotificationManager =
                         (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 // mId allows you to update the notification later on.
+                int mId = 1;
                 mNotificationManager.notify(mId, mBuilder.build());
 
 
                 //http://stackoverflow.com/questions/9631869/light-up-screen-when-notification-received-android
 
+                /*
                 //Gets PowerManager Service
                 PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
 
@@ -170,7 +196,7 @@ public class StepCounterService extends Service implements SensorEventListener {
 
                     wl_cpu.acquire(10000);
                 }
-
+                */
 
             }
 
@@ -182,5 +208,21 @@ public class StepCounterService extends Service implements SensorEventListener {
 
     }
 
+    public int getDifficultyValue(){
+
+        if(difficulty.contentEquals("Easy")){
+            return stepsAtLevelUp + 10;
+        }
+        else if(difficulty.contentEquals("Normal")){
+            return stepsAtLevelUp + (level * 2) * 10;
+        }
+        else if(difficulty.contentEquals("Hard")){
+            return stepsAtLevelUp + (level * 2) * 50;
+        }
+        else if(difficulty.contentEquals("Impossible")){
+            return stepsAtLevelUp + (level * 2) * 100;
+        }
+        return stepsAtLevelUp + 5;
+    }
 
 }

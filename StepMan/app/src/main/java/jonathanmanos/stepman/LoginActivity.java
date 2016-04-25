@@ -26,10 +26,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.PrintWriter;
@@ -69,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private String name;
     private SharedPreferences mPrefs;
     private boolean firstTime;
+    private Spinner spinnerColor;
+    private Spinner spinnerDifficulty;
     public final static String EXTRA_MESSAGE = "com.jonathanmanos.stepman.MESSAGE";
 
 
@@ -80,12 +84,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
 
         mPrefs = getSharedPreferences("label", 0);
-        name = mPrefs.getString("tag", "");
+        name = mPrefs.getString("name", "");
 
         if(!name.isEmpty())
         {
             firstTime = false;
-            Intent intent = new Intent(getApplicationContext(), ProfileActivity1.class);
+            Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
             startActivity(intent);
             logIn.finish();
         }
@@ -93,9 +97,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             firstTime = true;
             setContentView(R.layout.activity_login);
 
+            spinnerColor = (Spinner)findViewById(R.id.spinnerColor);
+            String[] colors = new String[]{"Black", "Red", "Green", "Blue"};
+            ArrayAdapter<String>adapterColor = new ArrayAdapter<String>(LoginActivity.this,
+                    android.R.layout.simple_spinner_item,colors);
+
+            adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerColor.setAdapter(adapterColor);
+
+            spinnerDifficulty = (Spinner)findViewById(R.id.spinnerDifficulty);
+            String[] difficulties = new String[]{"Easy", "Normal", "Hard", "Impossible"};
+            ArrayAdapter<String>adapterDifficulty = new ArrayAdapter<String>(LoginActivity.this,
+                    android.R.layout.simple_spinner_item,difficulties);
+
+            adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerDifficulty.setAdapter(adapterDifficulty);
+
             // Set up the login form.
             mEmailView = (AutoCompleteTextView) findViewById(R.id.name);
-            populateAutoComplete();
+
 
             mPasswordView = (EditText) findViewById(R.id.name);
             mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -122,51 +142,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
-
-
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -184,10 +159,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String color = spinnerColor.getSelectedItem().toString();
+        String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
-        name =email;
+        name = email;
         SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putString("tag", name).commit();
+        mEditor.putString("name", name);
+        mEditor.putString("color", color);
+        mEditor.putString("difficulty", difficulty);
+        mEditor.apply();
 
         boolean cancel = false;
         View focusView = null;
@@ -362,7 +342,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity1.class);
+                Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
                 EditText editText = (EditText) findViewById(R.id.name);
                 String message = editText.getText().toString();
                 intent.putExtra(EXTRA_MESSAGE, message);

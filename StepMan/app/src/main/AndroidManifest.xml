@@ -5,10 +5,15 @@
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-feature android:name="@string/step_detector" android:required="false"/>
-    <uses-feature android:name="@string/step_counter" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature
+        android:name="@string/step_detector"
+        android:required="true" />
+    <uses-feature
+        android:name="@string/step_counter"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -25,18 +30,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProfileActivity1"
-            android:label="@string/title_activity_profile1"
-            android:parentActivityName=".LoginActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="jonathanmanos.stepman.LoginActivity" />
-        </activity>
+
         <service
             android:name=".StepCounterService"
-            android:enabled="true"/>
+            android:enabled="true" />
+
+        <activity
+            android:name=".MainTabbedActivity"
+            android:label="@string/title_activity_main_tabbed"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="StepMan"
+            android:parentActivityName=".MainTabbedActivity" >
+            <!-- The meta-data element is needed for versions lower than 4.1 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainTabbedActivity" />
+        </activity>
 
     </application>
 
