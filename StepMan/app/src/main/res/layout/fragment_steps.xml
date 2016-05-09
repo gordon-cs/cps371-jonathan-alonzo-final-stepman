@@ -28,7 +28,6 @@
             android:id="@+id/stepsperweek"
             android:text="Steps per Week: 0"
             android:textSize="16pt"
-            android:layout_marginTop="5pt"
             android:layout_marginBottom="5pt"
             android:background="@drawable/background"
             android:layout_width="match_parent"
@@ -45,8 +44,28 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/stepsperhour"
-            android:text="Steps per Hour: 0"
+        android:id="@+id/stepsperhour"
+        android:text="Steps per Hour: 0"
+        android:textSize="16pt"
+        android:layout_marginTop="5pt"
+        android:layout_marginBottom="5pt"
+        android:background="@drawable/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/stepsperminute"
+            android:text="Steps per Minute: 0"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/stepsMiles"
+            android:text="Walked 0 Miles"
             android:textSize="16pt"
             android:layout_marginTop="5pt"
             android:layout_marginBottom="5pt"

@@ -85,6 +85,7 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
     private static int magicDef;
     private static int speed;
 
+    private static final int mileSteps = 2640;
     private static final int marathonSteps = 69168;
 
     private Sensor mStepCounterSensor;
@@ -352,9 +353,10 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
 
                 long currentTime = System.currentTimeMillis() / 1000L;
 
-                int numberOfWeeks = (int)(currentTime - unixTime)/60/60/24/7;
-                int numberOfDays = (int)(currentTime - unixTime)/60/60/24;
-                int numberOfHours = (int)(currentTime - unixTime)/60/60;
+                double numberOfWeeks = (currentTime - unixTime)/60/60/24/7;
+                double numberOfDays = (currentTime - unixTime)/60/60/24;
+                double numberOfHours = (currentTime - unixTime)/60/60;
+                double numberOfMins = (currentTime - unixTime)/60;
 
                 if(numberOfWeeks == 0)
                     numberOfWeeks = 1;
@@ -362,10 +364,13 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                     numberOfDays = 1;
                 if(numberOfHours == 0)
                     numberOfHours = 1;
+                if(numberOfMins == 0)
+                    numberOfMins = 1;
 
                 double stepsPerWeek = steps / numberOfWeeks;
                 double stepsPerDay = steps / numberOfDays;
                 double stepsPerHour = steps / numberOfHours;
+                double stepsPerMinute = steps / numberOfMins;
 
                 TextView stepsWeek = (TextView) rootView.findViewById(R.id.stepsperweek);
                 stepsWeek.setText("Steps per Week: " + df.format(stepsPerWeek));
@@ -376,13 +381,21 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 TextView stepsHour = (TextView) rootView.findViewById(R.id.stepsperhour);
                 stepsHour.setText("Steps per Hour: " + df.format(stepsPerHour));
 
-                TextView stepsworld = (TextView) rootView.findViewById(R.id.stepsworld);
-                stepsworld.setText("Reached world: " + worldLevel);
+                TextView stepsMinute = (TextView) rootView.findViewById(R.id.stepsperminute);
+                stepsMinute.setText("Steps per Minute: " + df.format(stepsPerMinute));
+
+                double miles = (double) steps / (double) mileSteps;
+
+                TextView stepsMiles = (TextView) rootView.findViewById(R.id.stepsMiles);
+                stepsMiles.setText("Walked " + df.format(miles) + " Miles");
 
                 double marathon = (double)steps / (double)marathonSteps;
 
                 TextView stepsMarathon = (TextView) rootView.findViewById(R.id.stepsMarathon);
                 stepsMarathon.setText("Walked " + df.format(marathon) + " Marathons");
+
+                TextView stepsworld = (TextView) rootView.findViewById(R.id.stepsworld);
+                stepsworld.setText("Reached world: " + worldLevel);
 
                 return rootView;
             }
@@ -602,9 +615,10 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
 
                 long currentTime = System.currentTimeMillis() / 1000L;
 
-                int numberOfWeeks = (int) (currentTime - unixTime) / 60 / 60 / 24 / 7;
-                int numberOfDays = (int) (currentTime - unixTime) / 60 / 60 / 24;
-                int numberOfHours = (int) (currentTime - unixTime) / 60 / 60;
+                double numberOfWeeks = (currentTime - unixTime) / 60 / 60 / 24 / 7;
+                double numberOfDays = (currentTime - unixTime) / 60 / 60 / 24;
+                double numberOfHours = (currentTime - unixTime) / 60 / 60;
+                double numberOfMinutes = (currentTime - unixTime) / 60;
 
                 if (numberOfWeeks == 0)
                     numberOfWeeks = 1;
@@ -612,10 +626,13 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                     numberOfDays = 1;
                 if (numberOfHours == 0)
                     numberOfHours = 1;
+                if (numberOfMinutes == 0)
+                    numberOfMinutes = 1;
 
                 double stepsPerWeek = steps / numberOfWeeks;
                 double stepsPerDay = steps / numberOfDays;
                 double stepsPerHour = steps / numberOfHours;
+                double stepsPerMinute = steps / numberOfMinutes;
 
                 TextView stepsWeek = (TextView) findViewById(R.id.stepsperweek);
                 stepsWeek.setText("Steps per Week: " + df.format(stepsPerWeek));
@@ -626,13 +643,21 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 TextView stepsHour = (TextView) findViewById(R.id.stepsperhour);
                 stepsHour.setText("Steps per Hour: " + df.format(stepsPerHour));
 
-                TextView stepsworld = (TextView) findViewById(R.id.stepsworld);
-                stepsworld.setText("Reached world: " + worldLevel);
+                TextView stepsMinute = (TextView) findViewById(R.id.stepsperminute);
+                stepsMinute.setText("Steps per Minute: " + df.format(stepsPerMinute));
+
+                double miles = (double) steps / (double) mileSteps;
+
+                TextView stepsMiles = (TextView) findViewById(R.id.stepsMiles);
+                stepsMiles.setText("Walked " + df.format(miles) + " Miles");
 
                 double marathon = (double) steps / (double) marathonSteps;
 
                 TextView stepsMarathon = (TextView) findViewById(R.id.stepsMarathon);
                 stepsMarathon.setText("Walked " + df.format(marathon) + " Marathons");
+
+                TextView stepsworld = (TextView) findViewById(R.id.stepsworld);
+                stepsworld.setText("Reached world: " + worldLevel);
             }
             catch(NullPointerException e){
                 System.out.println("NULLLLLL - not steps page");

@@ -214,46 +214,74 @@ public class BattleActivity extends AppCompatActivity {
 
             if (level == 1) {
                 attack = 15;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(4);
             }
             if (level == 2) {
                 attack = 20;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(6);
             }
             if (level == 3) {
                 attack = 30;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(10);
             }
             if (level == 4) {
                 attack = 40;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(14);
             }
             if (level == 5) {
                 attack = 50;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(18);
             }
             if (level == 6) {
                 attack = 60;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(20);
             }
             if (level == 7) {
                 attack = 70;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(25);
             }
             if (level == 8) {
                 attack = 80;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(30);
             }
             if (level == 9) {
                 attack = 90;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(40);
             }
             if (level == 10) {
                 attack = 100;
+                attack -= (defense + magicDef)/2;
+                if(attack < 1)
+                    attack = 1;
                 attack += rand.nextInt(50);
             }
-
-            attack -= (defense + magicDef)/2;
 
             if(attack < 1)
                 attack = 1;
@@ -533,6 +561,18 @@ public class BattleActivity extends AppCompatActivity {
         battlePlayer.stop();
         victoryPlayer.stop();
         failurePlayer.stop();
+
+        battlePlayer.reset();
+        victoryPlayer.reset();
+        failurePlayer.reset();
+        punchPlayer.reset();
+        magicPlayer.reset();
+
+        battlePlayer.release();
+        victoryPlayer.release();
+        failurePlayer.release();
+        punchPlayer.release();
+        magicPlayer.release();
         finish();
     }
 }
