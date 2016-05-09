@@ -8,12 +8,14 @@ On first startup, there is a login activity where you enter a name, color, and d
 Afterwards you will be brought to the stepman menu. From here you can play the game, go to your profile pages, or go to the settings.
 
 Upon going to your profile pages you can find four things:
+
 1. Your Profile - Name, Image, Steps, Level, Steps till next level
 2. Your Stats - All of your characters stats, ability to spend stat points, ability to reset stat points
 3. Your Steps - Some helpful data about your steps, the world level you are on
 4. Settings - Upon clicking the three dots in the top right corner you can go to settings (also reachable from main menu)
 
 The settings page allows you to:
+
 1. Edit your name, color, and difficulty
 2. Save your new settings
 3. Delete your account
@@ -23,6 +25,7 @@ Upon pressing play on the Main Menu you will be brought to the world page.
 On the World Page there are 10 levels, where more levels become available as you beat the ones currently unlocked.
 
 Upon selecting a world, you will be brought to a battle. In the battle you have four options:
+
 1. Blaze Kick - a fire charged attack - effective against ice enemies
 2. Ice Strike - a ice charged attack - effective against fire enemies
 3. Mega Punch - a purely physical attack - effective against physical enemies
@@ -30,58 +33,58 @@ Upon selecting a world, you will be brought to a battle. In the battle you have 
 
 Special Features Included:
 
-+Accelerometer - for Step Counter and Step Detector
+*Accelerometer - for Step Counter and Step Detector
 
-+Saves Data - the app remembers you and your progress
+*Saves Data - the app remembers you and your progress
 
-+Custom App Image - it's pretty
+*Custom App Image - it's pretty
 
-+Updates as you move!
+*Updates as you move!
 
-+Background Service to keep progress
+*Background Service to keep progress
 
-+Notifications
+*Notifications
 
-+Many Unique Activities
+*Many Unique Activities
 
-+Interesting Gameplay
+*Interesting Gameplay
 
-+Incredible Game Logic
+*Incredible Game Logic
 
-+Fantastic Visuals and Audio
+*Fantastic Visuals and Audio
 
 Future Features?:
 
-+Save Information on a Server
+*Save Information on a Server
 
-+Button Confirmations
+*Button Confirmations
 
-+Better Battle Animations
+*Better Battle Animations
 
-+More Gameplay
+*More Gameplay
 
-+More Complex Game Logic
+*More Complex Game Logic
 
-+Stretch: Leaderboards
+*Stretch: Leaderboards
 
-+More Levels!
+*More Levels!
 
 4am Thoughts:
 
-+fight monsters and bosses and become a boss yourself
+*fight monsters and bosses and become a boss yourself
 
-+Lose Weight!
+*Lose Weight!
 
-+Save the environment
+*Save the environment
 
-+make a positive impact on society
+*make a positive impact on society
 
-+eat more taco bell
+*eat more taco bell
 
-+step more
+*step more
 
-+4 for 4
+*4 for 4
 
-+if you don't reach 6,000 steps a day using this app, you lack motivation
+*if you don't reach 6,000 steps a day using this app, you lack motivation
 
-+Sorry!
+*Sorry!
