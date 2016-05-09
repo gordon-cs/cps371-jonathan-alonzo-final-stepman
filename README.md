@@ -33,58 +33,58 @@ Upon selecting a world, you will be brought to a battle. In the battle you have 
 
 Special Features Included:
 
-*Accelerometer - for Step Counter and Step Detector
+* Accelerometer - for Step Counter and Step Detector
 
-*Saves Data - the app remembers you and your progress
+* Saves Data - the app remembers you and your progress
 
-*Custom App Image - it's pretty
+* Custom App Image - it's pretty
 
-*Updates as you move!
+* Updates as you move!
 
-*Background Service to keep progress
+* Background Service to keep progress
 
-*Notifications
+* Notifications
 
-*Many Unique Activities
+* Many Unique Activities
 
-*Interesting Gameplay
+* Interesting Gameplay
 
-*Incredible Game Logic
+* Incredible Game Logic
 
-*Fantastic Visuals and Audio
+* Fantastic Visuals and Audio
 
 Future Features?:
 
-*Save Information on a Server
+* Save Information on a Server
 
-*Button Confirmations
+* Button Confirmations
 
-*Better Battle Animations
+* Better Battle Animations
 
-*More Gameplay
+* More Gameplay
 
-*More Complex Game Logic
+* More Complex Game Logic
 
-*Stretch: Leaderboards
+* Stretch: Leaderboards
 
-*More Levels!
+* More Levels!
 
 4am Thoughts:
 
-*fight monsters and bosses and become a boss yourself
+* fight monsters and bosses and become a boss yourself
 
-*Lose Weight!
+* Lose Weight!
 
-*Save the environment
+* Save the environment
 
-*make a positive impact on society
+* make a positive impact on society
 
-*eat more taco bell
+* eat more taco bell
 
-*step more
+* step more
 
-*4 for 4
+* 4 for 4
 
-*if you don't reach 6,000 steps a day using this app, you lack motivation
+* if you don't reach 6,000 steps a day using this app, you lack motivation
 
-*Sorry!
+* Sorry!
