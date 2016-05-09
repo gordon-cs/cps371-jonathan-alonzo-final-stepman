@@ -1,7 +1,7 @@
-Step Man (Game/Step Counter)
-#Jon-Alonzo-Final-StepMan Game
+#Step Man (Game/Step Counter)
+##Jon-Alonzo-Final-StepMan Game
 
--A step counter that also acts as a game!
+###A step counter that also acts as a game!
 
 On first startup, there is a login activity where you enter a name, color, and difficulty. These settings can be changed at any time upon going to the settings page.
 
@@ -34,57 +34,34 @@ Upon selecting a world, you will be brought to a battle. In the battle you have 
 Special Features Included:
 
 * Accelerometer - for Step Counter and Step Detector
-
 * Saves Data - the app remembers you and your progress
-
 * Custom App Image - it's pretty
-
 * Updates as you move!
-
 * Background Service to keep progress
-
 * Notifications
-
 * Many Unique Activities
-
 * Interesting Gameplay
-
 * Incredible Game Logic
-
 * Fantastic Visuals and Audio
 
 Future Features?:
 
 * Save Information on a Server
-
 * Button Confirmations
-
 * Better Battle Animations
-
 * More Gameplay
-
 * More Complex Game Logic
-
 * Stretch: Leaderboards
-
 * More Levels!
 
 4am Thoughts:
 
 * fight monsters and bosses and become a boss yourself
-
 * Lose Weight!
-
 * Save the environment
-
 * make a positive impact on society
-
 * eat more taco bell
-
 * step more
-
 * 4 for 4
-
 * if you don't reach 6,000 steps a day using this app, you lack motivation
-
 * Sorry!
