@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
         newNameView.setText(name);
 
         spinnerColor = (Spinner)findViewById(R.id.spinnerColor);
-        String[] colors = new String[]{"Black", "Red", "Green", "Blue"};
+        String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Luigi"};
         ArrayAdapter<String> adapterColor = new ArrayAdapter<String>(SettingsActivity.this,
                 android.R.layout.simple_spinner_item,colors);
 
@@ -46,6 +46,8 @@ public class SettingsActivity extends AppCompatActivity {
             spinnerColor.setSelection(2);
         else if(color.contentEquals("Blue"))
             spinnerColor.setSelection(3);
+        else if(color.contentEquals("Luigi"))
+            spinnerColor.setSelection(4);
 
         spinnerDifficulty = (Spinner)findViewById(R.id.spinnerDifficulty);
         String[] difficulties = new String[]{"Easy", "Normal", "Hard", "Impossible"};
@@ -93,9 +95,6 @@ public class SettingsActivity extends AppCompatActivity {
         mEditor.putString("difficulty", difficulty);
         mEditor.commit();
 
-        MainTabbedActivity.mainActivity.finish();
-        Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
-        startActivity(intent);
         finish();
     }
 

@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Id to identity READ_CONTACTS permission request.
      */
-    private static final int REQUEST_READ_CONTACTS = 0;
     public static Activity logIn;
 
     /**
@@ -89,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if(!name.isEmpty())
         {
             firstTime = false;
-            Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
             startActivity(intent);
             logIn.finish();
         }
@@ -98,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             setContentView(R.layout.activity_login);
 
             spinnerColor = (Spinner)findViewById(R.id.spinnerColor);
-            String[] colors = new String[]{"Black", "Red", "Green", "Blue"};
+            String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Luigi"};
             ArrayAdapter<String>adapterColor = new ArrayAdapter<String>(LoginActivity.this,
                     android.R.layout.simple_spinner_item,colors);
 
@@ -164,6 +163,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         name = email;
         SharedPreferences.Editor mEditor = mPrefs.edit();
+        long unixTime = System.currentTimeMillis() / 1000L;
+        mEditor.putLong("unixTime", unixTime);
         mEditor.putString("name", name);
         mEditor.putString("color", color);
         mEditor.putString("difficulty", difficulty);
@@ -342,7 +343,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 EditText editText = (EditText) findViewById(R.id.name);
                 String message = editText.getText().toString();
                 intent.putExtra(EXTRA_MESSAGE, message);

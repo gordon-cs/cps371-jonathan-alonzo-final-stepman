@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/city"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jonathanmanos.stepman.WorldActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16pt"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_marginBottom="10pt"
+            android:background="@color/whiteGhost"
+            android:text="World of StepMan"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="124pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonten"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle10"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20pt"
+                android:layout_marginRight="10pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttoneight"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle8"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10pt"
+                android:layout_marginRight="10pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonnine"
+                    android:text="9"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle9"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="100pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonseven"
+                    android:text="7"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle7"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="124pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonsix"
+                    android:text="6"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle6"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="20pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonfive"
+                    android:text="5"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle5"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonfour"
+                    android:text="4"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle4"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="126pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonthree"
+                    android:text="3"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle3"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="60pt"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttontwo"
+                    android:text="2"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle2"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/buttonone"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:background="@drawable/worldbutton"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="goToBattle1"
+                    android:clickable="true"
+                    android:enabled="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </GridLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

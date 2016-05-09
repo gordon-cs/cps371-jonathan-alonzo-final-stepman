@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jonathanmanos.stepman.BattleActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5pt"
+        android:layout_marginBottom="5pt"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40pt"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/battlename"
+                    android:text="Jonny"
+                    android:textSize="14pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/battlehp"
+                    android:text="HP: 10/10"
+                    android:textSize="14pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/battleenemy"
+                    android:text="Bad Guy"
+                    android:textSize="14pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/battleenemyhp"
+                    android:text="HP: 5/5"
+                    android:textSize="14pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5pt"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/battlepopup"
+                android:text=""
+                android:textSize="14pt"
+                android:textColor="@color/red"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/battlepopupenemy"
+                android:text=""
+                android:textSize="14pt"
+                android:textColor="@color/red"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="8pt">
+
+            <RelativeLayout
+                android:id="@+id/playerlayer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/battleimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="120pt"
+                    android:layout_marginTop="20pt"
+                    android:src="@drawable/stepmanrunning"/>
+                <ImageView
+                    android:id="@+id/myanimation"
+                    android:layout_width="match_parent"
+                    android:layout_height="120pt"
+                    android:layout_marginTop="20pt"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/enemylayer"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/battleenemyimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="120pt"
+                    android:layout_marginBottom="40pt"
+                    android:src="@drawable/stepmanrunning"/>
+                <ImageView
+                    android:id="@+id/enemyanimation"
+                    android:layout_width="match_parent"
+                    android:layout_height="120pt"
+                    android:layout_marginBottom="40pt"/>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/blazekickbutton"
+                    android:text="Blaze\nKick"
+                    android:textSize="12pt"
+                    android:background="@drawable/worldbutton"
+                    android:layout_margin="2pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="blazeKick"
+                    android:clickable="true"
+                    android:enabled="true"/>
+                <Button
+                    android:id="@+id/icestrikebutton"
+                    android:text="Ice\nStrike"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_margin="2pt"
+                    android:background="@drawable/worldbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="iceStrike"
+                    android:clickable="true"
+                    android:enabled="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/megapunchbutton"
+                    android:text="Mega\npunch"
+                    android:textSize="12pt"
+                    android:background="@drawable/worldbutton"
+                    android:layout_weight="1"
+                    android:layout_margin="2pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="megaPunch"
+                    android:clickable="true"
+                    android:enabled="true"/>
+                <Button
+                    android:id="@+id/fleebutton"
+                    android:text="Run\nAway"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_margin="2pt"
+                    android:background="@drawable/worldbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="goToWorld"
+                    android:clickable="true"
+                    android:enabled="true"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </GridLayout>
+
+
+</RelativeLayout>
+

@@ -44,7 +44,9 @@
             android:id="@+id/mylevelview"
             android:text="Level: 1"
             android:textSize="20pt"
-            android:layout_margin="5pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -52,7 +54,9 @@
             android:id="@+id/mystepview"
             android:text="Steps: 0"
             android:textSize="16pt"
-            android:layout_margin="5pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -62,6 +66,7 @@
             android:textSize="12pt"
             android:layout_marginTop="5pt"
             android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -69,7 +74,9 @@
             android:id="@+id/mydifficultyview"
             android:text="Difficulty: Easy"
             android:textSize="12pt"
-            android:layout_margin="5pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background"
             android:orientation="horizontal"
             android:layout_margin="10pt">
 
@@ -38,6 +39,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -83,6 +85,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -126,6 +129,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -169,6 +173,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -212,6 +217,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -255,6 +261,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/background"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
 
@@ -298,7 +305,27 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="10pt">
+            android:layout_margin="10pt"
+            android:layout_marginBottom="5pt">
+            <Button
+                android:id="@+id/buttonpointadjustor"
+                android:text="Adjust Points To Add: 1"
+                android:background="@drawable/menu_button"
+                android:textSize="12pt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="changePointSpendAmount"
+                android:enabled="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10pt"
+            android:layout_marginTop="0pt">
 
             <Button
                 android:text="Reset Points"

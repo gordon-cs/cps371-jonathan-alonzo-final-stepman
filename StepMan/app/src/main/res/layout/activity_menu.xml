@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/blue"
+    tools:context="jonathanmanos.stepman.SettingsActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:layout_margin="5pt"
+
+            android:src="@drawable/stepman"
+            android:background="@color/whiteGhost"/>
+
+        <Button
+            android:text="Play"
+            android:background="@drawable/playbutton"
+            android:textSize="12pt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5pt"
+            android:layout_marginTop="10pt"
+            android:clickable="true"
+            android:onClick="goToGame"
+            android:enabled="true" />
+
+        <Button
+            android:text="Profile"
+            android:background="@drawable/menu_button"
+            android:textSize="12pt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5pt"
+            android:layout_marginTop="10pt"
+            android:clickable="true"
+            android:onClick="goToProfile"
+            android:enabled="true" />
+
+            <Button
+                android:text="Stats"
+                android:background="@drawable/menu_button"
+                android:textSize="12pt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5pt"
+                android:layout_marginTop="10pt"
+                android:clickable="true"
+                android:onClick="goToStats"
+                android:enabled="true" />
+
+            <Button
+                android:text="Steps"
+                android:background="@drawable/menu_button"
+                android:textSize="12pt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5pt"
+                android:layout_marginTop="10pt"
+                android:clickable="true"
+                android:onClick="goToStepStats"
+                android:enabled="true" />
+
+            <Button
+                android:text="Settings"
+                android:background="@drawable/menu_button"
+                android:textSize="12pt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5pt"
+                android:layout_marginTop="10pt"
+                android:clickable="true"
+                android:onClick="goToSettings"
+                android:enabled="true" />
+
+
+
+
+
+    </GridLayout>
+
+</RelativeLayout>

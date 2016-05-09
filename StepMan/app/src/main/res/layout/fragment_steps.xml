@@ -8,63 +8,72 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jonathanmanos.stepman.MainTabbedActivity$PlaceholderFragment">
 
-    <LinearLayout
+    <GridLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10pt">
+
+        </LinearLayout>
+
+
 
         <TextView
-            android:id="@+id/mytextview"
-            android:text="\nWelcome, "
-            android:textSize="14pt"
+            android:id="@+id/stepsperweek"
+            android:text="Steps per Week: 0"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="\n"
-            android:textSize="10pt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50pt"
-            android:src="@drawable/stepmanrunning"
-            android:scaleType="centerInside"
-            android:adjustViewBounds="true"/>
-
-        <TextView
-            android:text="\n"
-            android:textSize="10pt"
+            android:id="@+id/stepsperday"
+            android:text="Steps per Day: 0"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/mystepview"
-            android:text="Steps: 0\n"
-            android:textSize="20pt"
+            android:id="@+id/stepsperhour"
+            android:text="Steps per Hour: 0"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/mylevelview"
-            android:text="Level: 1"
-            android:textSize="20pt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="\n"
-            android:textSize="5pt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="HP:                   10"
-            android:textSize="14pt"
+            android:id="@+id/stepsMarathon"
+            android:text="Walked 0 Marathons"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/stepsworld"
+            android:text="Reached world: z"
+            android:textSize="16pt"
+            android:layout_marginTop="5pt"
+            android:layout_marginBottom="5pt"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </GridLayout>
 
 </RelativeLayout>

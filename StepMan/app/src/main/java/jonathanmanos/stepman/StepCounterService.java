@@ -53,12 +53,17 @@ public class StepCounterService extends Service implements SensorEventListener {
         mPrefs = getSharedPreferences("label", 0);
         name = mPrefs.getString("tag", "");
         steps = mPrefs.getInt("steps", 0);
-        stepsAtLevelUp = mPrefs.getInt("stepsAtLevel", 0);
+        stepsAtLevelUp = mPrefs.getInt("stepsAtLevelUp", 0);
         level = mPrefs.getInt("level", 1);
         points = mPrefs.getInt("points",0);
         difficulty = mPrefs.getString("difficulty","");
         difficultyValue = mPrefs.getInt("difficultyValue",10);
         difficultyValue = getDifficultyValue();
+
+
+
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("difficultyValue", difficultyValue).apply();
 
         System.out.println("Background service now running!!!!!!!!!!!!!!!!!");
 
@@ -115,10 +120,13 @@ public class StepCounterService extends Service implements SensorEventListener {
             SharedPreferences.Editor mEditor = mPrefs.edit();
             mEditor.putInt("steps", steps);
             mEditor.putInt("difficultyValue", difficultyValue);
+            mEditor.putBoolean("needToRecreate", true);
             mEditor.apply();
 
 
+            System.out.println("using service");
 
+            System.out.println("steps at: " + steps);
             System.out.println("difficulty value is: " +difficultyValue);
 
             if(steps == difficultyValue) {
@@ -128,6 +136,13 @@ public class StepCounterService extends Service implements SensorEventListener {
                 difficultyValue = getDifficultyValue();
                 mEditor.putInt("level", level);
                 mEditor.putInt("points", points);
+                mEditor.putInt("hp", mPrefs.getInt("hp", 10) + 1);
+                mEditor.putInt("strength", mPrefs.getInt("strength", 10) + 1);
+                mEditor.putInt("defense", mPrefs.getInt("defense", 10) + 1);
+                mEditor.putInt("magic", mPrefs.getInt("magic", 10) + 1);
+                mEditor.putInt("magicDef", mPrefs.getInt("magicDef", 10) + 1);
+                mEditor.putInt("speed", mPrefs.getInt("speed", 10) + 1);
+
                 mEditor.putInt("stepsAtLevelUp", stepsAtLevelUp);
                 mEditor.putInt("difficultyValue", difficultyValue);
                 mEditor.apply();
@@ -147,9 +162,11 @@ public class StepCounterService extends Service implements SensorEventListener {
                                 .setContentText(contentText)
                                 .setSubText(contentSubText)
                                 .setDefaults(-1)
+                                .setAutoCancel(true)
                         ;
                 // Creates an explicit intent for an Activity in your app
-                Intent resultIntent = new Intent(this, MainTabbedActivity.class);
+                Intent menuIntent = new Intent(this, MenuActivity.class);
+                Intent statsIntent = new Intent(this, MainTabbedActivity.class);
 
 
                 // The stack builder object will contain an artificial back stack for the
@@ -158,9 +175,9 @@ public class StepCounterService extends Service implements SensorEventListener {
                 // your application to the Home screen.
                 TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
                 // Adds the back stack for the Intent (but not the Intent itself)
-                stackBuilder.addParentStack(MainTabbedActivity.class);
+                stackBuilder.addParentStack(MenuActivity.class);
                 // Adds the Intent that starts the Activity to the top of the stack
-                stackBuilder.addNextIntent(resultIntent);
+                stackBuilder.addNextIntent(menuIntent);
                 PendingIntent resultPendingIntent =
                         stackBuilder.getPendingIntent(
                                 0,
