@@ -1,27 +1,32 @@
-# jonathan-alonzo-simple
 Step Man (Game/Step Counter)
+#Jon-Alonzo-Final-StepMan Game
 
 -A step counter that also acts as a game!
 
-On first startup, there is a login activity where you enter a name that will you have for the rest of the time you play the game, unless you delete it. 
+On first startup, there is a login activity where you enter a name, color, and difficulty. These settings can be changed at any time upon going to the settings page.
 
-Afterwards you will be brought to a profile activity that will welcome you with the name you provided in another activity, and also keep track of your steps and level. You can shut down the app and it will remember your name, steps, and level. 
+Afterwards you will be brought to the stepman menu. From here you can play the game, go to your profile pages, or go to the settings.
 
-The features are very limited as of now, but the core functionality is happily working.
+Upon going to your profile pages you can find four things:
+1. Your Profile - Name, Image, Steps, Level, Steps till next level
+2. Your Stats - All of your characters stats, ability to spend stat points, ability to reset stat points
+3. Your Steps - Some helpful data about your steps, the world level you are on
+4. Settings - Upon clicking the three dots in the top right corner you can go to settings (also reachable from main menu)
 
-There is also a HttpUrlConnection to a random website at the bottom of the page that fetches 20 characters of data from a website, by using another class to asynchronously pull the website data.
+The settings page allows you to:
+1. Edit your name, color, and difficulty
+2. Save your new settings
+3. Delete your account
 
-Features Included:
+Upon pressing play on the Main Menu you will be brought to the world page.
 
-+simple, useful(kind of), creative
+On the World Page there are 10 levels, where more levels become available as you beat the ones currently unlocked.
 
-+text, button, images
-
-+2 activities (initial activity can be reached by deleting profile(not implemented) or clearing data of the app.
-
-+fetches data using HttpURLConnection
-
-+scrolls down for page with lots of material
+Upon selecting a world, you will be brought to a battle. In the battle you have four options:
+1. Blaze Kick - a fire charged attack - effective against ice enemies
+2. Ice Strike - a ice charged attack - effective against fire enemies
+3. Mega Punch - a purely physical attack - effective against physical enemies
+4. Run Away - you had second thoughts and need to back out of the battle
 
 Special Features Included:
 
@@ -33,11 +38,35 @@ Special Features Included:
 
 +Updates as you move!
 
-Soon to be features(when not dead tired)
++Background Service to keep progress
 
-+Your stats will rise
++Notifications
 
-+It will run when the page is not up
++Many Unique Activities
+
++Interesting Gameplay
+
++Incredible Game Logic
+
++Fantastic Visuals and Audio
+
+Future Features?:
+
++Save Information on a Server
+
++Button Confirmations
+
++Better Battle Animations
+
++More Gameplay
+
++More Complex Game Logic
+
++Stretch: Leaderboards
+
++More Levels!
+
+4am Thoughts:
 
 +fight monsters and bosses and become a boss yourself
 
@@ -55,4 +84,4 @@ Soon to be features(when not dead tired)
 
 +if you don't reach 6,000 steps a day using this app, you lack motivation
 
-Sorry!
++Sorry!
