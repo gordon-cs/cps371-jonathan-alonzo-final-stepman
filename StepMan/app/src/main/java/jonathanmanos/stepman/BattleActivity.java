@@ -40,6 +40,9 @@ public class BattleActivity extends AppCompatActivity {
     private MediaPlayer failurePlayer;
     private MediaPlayer punchPlayer;
     private MediaPlayer magicPlayer;
+    private MediaPlayer booPlayer;
+    private MediaPlayer enemyPunchPlayer;
+
 
     private SharedPreferences mPrefs;
     private Handler h;
@@ -80,6 +83,9 @@ public class BattleActivity extends AppCompatActivity {
         failurePlayer = MediaPlayer.create(this, R.raw.failure);
         punchPlayer = MediaPlayer.create(this, R.raw.punches);
         magicPlayer = MediaPlayer.create(this, R.raw.fireball);
+        booPlayer = MediaPlayer.create(this, R.raw.boo);
+        enemyPunchPlayer = MediaPlayer.create(this, R.raw.punches);
+
 
 
         battlePlayer.start();
@@ -201,11 +207,11 @@ public class BattleActivity extends AppCompatActivity {
         if(currentEnemyHP <= 0)
             updatePage();
         else{
-            punchPlayer.start();
+            enemyPunchPlayer.start();
             TextView battleenemyhp = (TextView)findViewById(R.id.battleenemyhp);
             battleenemyhp.setText(Integer.toString(currentEnemyHP) + "/" + Integer.toString(enemyHP));
 
-            ImageView myanimation = (ImageView) findViewById(R.id.myanimation);
+            final ImageView myanimation = (ImageView) findViewById(R.id.myanimation);
             myanimation.setImageResource(R.drawable.pow);
             myanimation.setAlpha(.6F);
 
@@ -291,6 +297,30 @@ public class BattleActivity extends AppCompatActivity {
             TextView battlepopup = (TextView)findViewById(R.id.battlepopup);
             battlepopup.setText(Integer.toString(attack));
 
+            Runnable shake1 = new Runnable() {
+                @Override
+                public void run() {
+                    myanimation.setPadding(80,0,0,0);
+                }
+            };
+            Runnable shake2 = new Runnable() {
+                @Override
+                public void run() {
+                    myanimation.setPadding(0,80,0,0);
+                }
+            };
+            Runnable shake3 = new Runnable() {
+                @Override
+                public void run() {
+                    myanimation.setPadding(0,0,80,0);
+                }
+            };
+            Runnable shake4 = new Runnable() {
+                @Override
+                public void run() {
+                    myanimation.setPadding(0,0,0,80);
+                }
+            };
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
@@ -304,7 +334,11 @@ public class BattleActivity extends AppCompatActivity {
                     updatePage();
                 }
             };
-            h.postDelayed(r, 1000);
+            h.postDelayed(shake1,300);
+            h.postDelayed(shake2,600);
+            h.postDelayed(shake3,900);
+            h.postDelayed(shake4,1200);
+            h.postDelayed(r,1500);
         }
     }
 
@@ -401,7 +435,7 @@ public class BattleActivity extends AppCompatActivity {
     public void blazeKick(View view) {
         disableButtons();
         magicPlayer.start();
-        ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
+        final ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
         enemyanimation.setImageResource(R.drawable.fire);
         enemyanimation.setAlpha(.8F);
 
@@ -419,11 +453,36 @@ public class BattleActivity extends AppCompatActivity {
         {
             attack *= 2;
         }
+        attack += (int)(Math.random() * 10 + 1);
         currentEnemyHP -= attack;
 
         TextView battlepopupenemy = (TextView)findViewById(R.id.battlepopupenemy);
         battlepopupenemy.setText(Integer.toString(attack));
 
+        Runnable shake1 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(0,0,80,0);
+            }
+        };
+        Runnable shake2 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(80,0,0,0);
+            }
+        };
+        Runnable shake3 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(0,0,80,0);
+            }
+        };
+        Runnable shake4 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(80,0,0,0);
+            }
+        };
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -436,6 +495,10 @@ public class BattleActivity extends AppCompatActivity {
                 enemyAttack();
             }
         };
+        h.postDelayed(shake1,200);
+        h.postDelayed(shake2,400);
+        h.postDelayed(shake3,600);
+        h.postDelayed(shake4,800);
         h.postDelayed(r, 1000);
     }
     public void iceStrike(View view) {
@@ -459,7 +522,7 @@ public class BattleActivity extends AppCompatActivity {
         {
             attack *= 2;
         }
-
+        attack += (int)(Math.random() * 10 + 1);
         currentEnemyHP -= attack;
 
         TextView battlepopupenemy = (TextView)findViewById(R.id.battlepopupenemy);
@@ -483,7 +546,7 @@ public class BattleActivity extends AppCompatActivity {
     public void megaPunch(View view) {
         punchPlayer.start();
         disableButtons();
-        ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
+        final ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
         enemyanimation.setImageResource(R.drawable.punch);
         enemyanimation.setAlpha(.8F);
 
@@ -499,11 +562,36 @@ public class BattleActivity extends AppCompatActivity {
         {
             attack *= 2;
         }
+        attack += (int)(Math.random() * 10 + 1);
         currentEnemyHP -= attack;
 
         TextView battlepopupenemy = (TextView)findViewById(R.id.battlepopupenemy);
         battlepopupenemy.setText(Integer.toString(attack));
 
+        Runnable shake1 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(80,0,0,0);
+            }
+        };
+        Runnable shake2 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(0,80,0,0);
+            }
+        };
+        Runnable shake3 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(0,0,80,0);
+            }
+        };
+        Runnable shake4 = new Runnable() {
+            @Override
+            public void run() {
+                enemyanimation.setPadding(0,0,0,80);
+            }
+        };
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -516,11 +604,53 @@ public class BattleActivity extends AppCompatActivity {
                 enemyAttack();
             }
         };
-        h.postDelayed(r,1000);
+        h.postDelayed(shake1,300);
+        h.postDelayed(shake2,600);
+        h.postDelayed(shake3,900);
+        h.postDelayed(shake4,1200);
+        h.postDelayed(r,1500);
     }
 
     public void goToWorld(View view) {
-        this.finish();
+        booPlayer.start();
+        final ImageView battleimage = (ImageView) findViewById(R.id.battleimage);
+
+        Runnable shake1 = new Runnable() {
+            @Override
+            public void run() {
+                battleimage.setPadding(0,0,60,0);
+            }
+        };
+        Runnable shake2 = new Runnable() {
+            @Override
+            public void run() {
+                battleimage.setPadding(0,0,120,0);
+            }
+        };
+        Runnable shake3 = new Runnable() {
+            @Override
+            public void run() {
+                battleimage.setPadding(0,0,180,0);
+            }
+        };
+        Runnable shake4 = new Runnable() {
+            @Override
+            public void run() {
+                battleimage.setPadding(0,0,240,0);
+            }
+        };
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                booPlayer.stop();
+                finish();
+            }
+        };
+        h.postDelayed(shake1,400);
+        h.postDelayed(shake2,800);
+        h.postDelayed(shake3,1200);
+        h.postDelayed(shake4,1600);
+        h.postDelayed(r,2000);
     }
 
     private void disableButtons(){
@@ -556,6 +686,10 @@ public class BattleActivity extends AppCompatActivity {
         fleebutton.setEnabled(true);
     }
 
+    protected void onResume() {
+        super.onResume();
+    }
+
     protected void onStop() {
         super.onStop();
         battlePlayer.stop();
@@ -567,12 +701,16 @@ public class BattleActivity extends AppCompatActivity {
         failurePlayer.reset();
         punchPlayer.reset();
         magicPlayer.reset();
+        booPlayer.reset();
+        enemyPunchPlayer.reset();
 
         battlePlayer.release();
         victoryPlayer.release();
         failurePlayer.release();
         punchPlayer.release();
         magicPlayer.release();
+        booPlayer.release();
+        enemyPunchPlayer.release();
         finish();
     }
 }

@@ -1,5 +1,7 @@
 package jonathanmanos.stepman;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         newNameView.setText(name);
 
         spinnerColor = (Spinner)findViewById(R.id.spinnerColor);
-        String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Luigi"};
+        String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Liu"};
         ArrayAdapter<String> adapterColor = new ArrayAdapter<String>(SettingsActivity.this,
                 android.R.layout.simple_spinner_item,colors);
 
@@ -46,8 +48,6 @@ public class SettingsActivity extends AppCompatActivity {
             spinnerColor.setSelection(2);
         else if(color.contentEquals("Blue"))
             spinnerColor.setSelection(3);
-        else if(color.contentEquals("Luigi"))
-            spinnerColor.setSelection(4);
 
         spinnerDifficulty = (Spinner)findViewById(R.id.spinnerDifficulty);
         String[] difficulties = new String[]{"Easy", "Normal", "Hard", "Impossible"};
@@ -100,8 +100,25 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void deleteAccount(View view){
 
-        mPrefs.edit().clear().commit();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to delete your account?")
+                .setTitle("Delete Account")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //System.out.println("WOOHOO");
+                        mPrefs.edit().clear().commit();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 }
