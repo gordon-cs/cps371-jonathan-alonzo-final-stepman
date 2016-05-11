@@ -2,16 +2,20 @@ package jonathanmanos.stepman;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class WorldActivity extends AppCompatActivity {
 
     private SharedPreferences mPrefs;
     private static int worldLevel;
     public static boolean needToRecreate;
+    private static final float alphaValue = .5F;
+    public static MediaPlayer battlePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +23,13 @@ public class WorldActivity extends AppCompatActivity {
         setContentView(R.layout.activity_world);
 
         needToRecreate = false;
+        battlePlayer = MediaPlayer.create(this, R.raw.battle);
 
         mPrefs = getSharedPreferences("label", 0);
         worldLevel = mPrefs.getInt("worldLevel", 1);
 
         disableButtons();
+        showBeatenWorlds();
     }
 
     public void goToBattle1(View view) {
@@ -86,52 +92,85 @@ public class WorldActivity extends AppCompatActivity {
 
     private void disableButtons(){
 
-        float alphaValue = .65F;
+        if(worldLevel <= 9)
+            hideButton((Button) findViewById(R.id.world1button10));
+        if(worldLevel <= 8)
+            hideButton((Button) findViewById(R.id.world1button9));
+        if(worldLevel <= 7)
+            hideButton((Button) findViewById(R.id.world1button8));
+        if(worldLevel <= 6)
+            hideButton((Button) findViewById(R.id.world1button7));
+        if(worldLevel <= 5)
+            hideButton((Button) findViewById(R.id.world1button6));
+        if(worldLevel <= 4)
+            hideButton((Button) findViewById(R.id.world1button5));
+        if(worldLevel <= 3)
+            hideButton((Button) findViewById(R.id.world1button4));
+        if(worldLevel <= 2)
+            hideButton((Button) findViewById(R.id.world1button3));
+        if(worldLevel <= 1)
+            hideButton((Button) findViewById(R.id.world1button2));
 
-        if(worldLevel <= 9) {
-            Button buttonten = (Button) findViewById(R.id.buttonten);
-            buttonten.setAlpha(alphaValue);
-            buttonten.setEnabled(false);
+    }
+
+    private void showBeatenWorlds(){
+
+        if(worldLevel > 1) {
+            ((ImageView) findViewById(R.id.world1button1image)).setImageResource(R.drawable.w11chicken);
+            ((Button) findViewById(R.id.world1button1)).setText("");
         }
-        if(worldLevel <= 8) {
-            Button buttonnine = (Button) findViewById(R.id.buttonnine);
-            buttonnine.setAlpha(alphaValue);
-            buttonnine.setEnabled(false);
+        if(worldLevel > 2){
+            ((ImageView) findViewById(R.id.world1button2image)).setImageResource(R.drawable.w12paratroopa);
+            ((Button) findViewById(R.id.world1button2)).setText("");
         }
-        if(worldLevel <= 7) {
-            Button buttoneight = (Button) findViewById(R.id.buttoneight);
-            buttoneight.setAlpha(alphaValue);
-            buttoneight.setEnabled(false);
+        if(worldLevel > 3){
+            ((ImageView) findViewById(R.id.world1button3image)).setImageResource(R.drawable.w13freezard);
+            ((Button) findViewById(R.id.world1button3)).setText("");
         }
-        if(worldLevel <= 6) {
-            Button buttonseven = (Button) findViewById(R.id.buttonseven);
-            buttonseven.setAlpha(alphaValue);
-            buttonseven.setEnabled(false);
+        if(worldLevel > 4){
+            ((ImageView) findViewById(R.id.world1button4image)).setImageResource(R.drawable.w14infernal);
+            ((Button) findViewById(R.id.world1button4)).setText("");
         }
-        if(worldLevel <= 5) {
-            Button buttonsix = (Button) findViewById(R.id.buttonsix);
-            buttonsix.setAlpha(alphaValue);
-            buttonsix.setEnabled(false);
+        if(worldLevel > 5){
+            ((ImageView) findViewById(R.id.world1button5image)).setImageResource(R.drawable.w15starwolf);
+            ((Button) findViewById(R.id.world1button5)).setText("");
         }
-        if(worldLevel <= 4) {
-            Button buttonfive = (Button) findViewById(R.id.buttonfive);
-            buttonfive.setAlpha(alphaValue);
-            buttonfive.setEnabled(false);
+        if(worldLevel > 6){
+            ((ImageView) findViewById(R.id.world1button6image)).setImageResource(R.drawable.w16ridley);
+            ((Button) findViewById(R.id.world1button6)).setText("");
         }
-        if(worldLevel <= 3) {
-            Button buttonfour = (Button) findViewById(R.id.buttonfour);
-            buttonfour.setAlpha(alphaValue);
-            buttonfour.setEnabled(false);
+        if(worldLevel > 7){
+            ((ImageView) findViewById(R.id.world1button7image)).setImageResource(R.drawable.w17sephiroth);
+            ((Button) findViewById(R.id.world1button7)).setText("");
         }
-        if(worldLevel <= 2) {
-            Button buttonthree = (Button) findViewById(R.id.buttonthree);
-            buttonthree.setAlpha(alphaValue);
-            buttonthree.setEnabled(false);
+        if(worldLevel > 8){
+            ((ImageView) findViewById(R.id.world1button8image)).setImageResource(R.drawable.w18groudon);
+            ((Button) findViewById(R.id.world1button8)).setText("");
         }
-        if(worldLevel <= 1) {
-            Button buttontwo = (Button) findViewById(R.id.buttontwo);
-            buttontwo.setAlpha(alphaValue);
-            buttontwo.setEnabled(false);
+        if(worldLevel > 9){
+            ((ImageView) findViewById(R.id.world1button9image)).setImageResource(R.drawable.w19necron);
+            ((Button) findViewById(R.id.world1button9)).setText("");
+        }
+        if(worldLevel > 10){
+            ((ImageView) findViewById(R.id.world1button10image)).setImageResource(R.drawable.w110masterhand);
+            ((Button) findViewById(R.id.world1button10)).setText("");
+        }
+
+    }
+
+    private void hideButton(Button button){
+        button.setAlpha(alphaValue);
+        button.setEnabled(false);
+        button.setText("");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            // do stuff
+        } else {
+            //It's an orientation change.
         }
     }
 

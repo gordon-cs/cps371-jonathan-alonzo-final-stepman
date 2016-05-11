@@ -1,7 +1,7 @@
 package jonathanmanos.stepman;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -35,14 +35,14 @@ public class BattleActivity extends AppCompatActivity {
     private static int currentHP;
     private static int currentEnemyHP;
 
-    private MediaPlayer battlePlayer;
+    private boolean busy;
+
     private MediaPlayer victoryPlayer;
     private MediaPlayer failurePlayer;
     private MediaPlayer punchPlayer;
     private MediaPlayer magicPlayer;
     private MediaPlayer booPlayer;
     private MediaPlayer enemyPunchPlayer;
-
 
     private SharedPreferences mPrefs;
     private Handler h;
@@ -78,7 +78,8 @@ public class BattleActivity extends AppCompatActivity {
         speed = 1000;
         */
 
-        battlePlayer = MediaPlayer.create(this, R.raw.battle);
+        busy = false;
+
         victoryPlayer = MediaPlayer.create(this, R.raw.victory);
         failurePlayer = MediaPlayer.create(this, R.raw.failure);
         punchPlayer = MediaPlayer.create(this, R.raw.punches);
@@ -86,15 +87,13 @@ public class BattleActivity extends AppCompatActivity {
         booPlayer = MediaPlayer.create(this, R.raw.boo);
         enemyPunchPlayer = MediaPlayer.create(this, R.raw.punches);
 
-
-
-        battlePlayer.start();
+        WorldActivity.battlePlayer.start();
 
         TextView battlename = (TextView)findViewById(R.id.battlename);
         battlename.setText(name);
 
         TextView battlehp = (TextView)findViewById(R.id.battlehp);
-        battlehp.setText(Integer.toString(hp) + "/" + Integer.toString(hp));
+        battlehp.setText("HP: " + hp + "/" + hp);
 
         ImageView battleimage = (ImageView) findViewById(R.id.battleimage);
 
@@ -119,7 +118,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "normal";
             enemyName = "Chicken";
-            battleenemyimage.setImageResource(R.drawable.chicken);
+            battleenemyimage.setImageResource(R.drawable.w11chicken);
         }
         if(level == 2)
         {
@@ -127,7 +126,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "fire";
             enemyName = "Paratroopa";
-            battleenemyimage.setImageResource(R.drawable.paratroopa);
+            battleenemyimage.setImageResource(R.drawable.w12paratroopa);
         }
         if(level == 3)
         {
@@ -135,7 +134,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "ice";
             enemyName = "Freezard";
-            battleenemyimage.setImageResource(R.drawable.freezard);
+            battleenemyimage.setImageResource(R.drawable.w13freezard);
         }
         if(level == 4)
         {
@@ -143,7 +142,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "normal";
             enemyName = "Infernal";
-            battleenemyimage.setImageResource(R.drawable.infernal);
+            battleenemyimage.setImageResource(R.drawable.w14infernal);
         }
         if(level == 5)
         {
@@ -151,7 +150,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "ice";
             enemyName = "Star Wolf";
-            battleenemyimage.setImageResource(R.drawable.starwolf);
+            battleenemyimage.setImageResource(R.drawable.w15starwolf);
         }
         if(level == 6)
         {
@@ -159,7 +158,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "fire";
             enemyName = "Ridley";
-            battleenemyimage.setImageResource(R.drawable.ridley);
+            battleenemyimage.setImageResource(R.drawable.w16ridley);
         }
         if(level == 7)
         {
@@ -167,7 +166,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "normal";
             enemyName = "Sephiroth";
-            battleenemyimage.setImageResource(R.drawable.sephiroth);
+            battleenemyimage.setImageResource(R.drawable.w17sephiroth);
         }
         if(level == 8)
         {
@@ -175,7 +174,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "fire";
             enemyName = "Groudon";
-            battleenemyimage.setImageResource(R.drawable.groudon);
+            battleenemyimage.setImageResource(R.drawable.w18groudon);
         }
         if(level == 9)
         {
@@ -183,7 +182,7 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "ice";
             enemyName = "Necron";
-            battleenemyimage.setImageResource(R.drawable.necron);
+            battleenemyimage.setImageResource(R.drawable.w19necron);
         }
         if(level == 10)
         {
@@ -191,14 +190,14 @@ public class BattleActivity extends AppCompatActivity {
             currentEnemyHP = enemyHP;
             enemyType = "normal";
             enemyName = "Master Hand";
-            battleenemyimage.setImageResource(R.drawable.masterhand);
+            battleenemyimage.setImageResource(R.drawable.w110masterhand);
         }
 
         TextView battleenemy = (TextView)findViewById(R.id.battleenemy);
         battleenemy.setText(enemyName);
 
         TextView battleenemyhp = (TextView)findViewById(R.id.battleenemyhp);
-        battleenemyhp.setText(Integer.toString(enemyHP) + "/" + Integer.toString(enemyHP));
+        battleenemyhp.setText("HP: " + enemyHP + "/" + enemyHP);
 
         h = new Handler();
     }
@@ -209,7 +208,7 @@ public class BattleActivity extends AppCompatActivity {
         else{
             enemyPunchPlayer.start();
             TextView battleenemyhp = (TextView)findViewById(R.id.battleenemyhp);
-            battleenemyhp.setText(Integer.toString(currentEnemyHP) + "/" + Integer.toString(enemyHP));
+            battleenemyhp.setText("HP: " + currentEnemyHP + "/" + enemyHP);
 
             final ImageView myanimation = (ImageView) findViewById(R.id.myanimation);
             myanimation.setImageResource(R.drawable.pow);
@@ -346,20 +345,25 @@ public class BattleActivity extends AppCompatActivity {
 
         if(currentEnemyHP <= 0)
             currentEnemyHP = 0;
-        if(currentHP <= 0)
+        else if(currentHP <= 0)
             currentHP = 0;
+        else {
+            busy = false;
+            enableButtons();
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        }
 
         TextView battlehp = (TextView)findViewById(R.id.battlehp);
-        battlehp.setText(Integer.toString(currentHP) + "/" + Integer.toString(hp));
+        battlehp.setText("HP: "+ currentHP + "/" + hp);
 
         TextView battleenemyhp = (TextView)findViewById(R.id.battleenemyhp);
-        battleenemyhp.setText(Integer.toString(currentEnemyHP) + "/" + Integer.toString(enemyHP));
+        battleenemyhp.setText("HP: "+ currentEnemyHP + "/" + enemyHP);
 
         if(currentHP == 0)
         {
             ImageView myanimation = (ImageView) findViewById(R.id.myanimation);
             myanimation.setImageResource(R.drawable.skull);
-            myanimation.setAlpha(.8F);
+            myanimation.setAlpha(.9F);
 
             Runnable skull = new Runnable() {
                 @Override
@@ -373,7 +377,7 @@ public class BattleActivity extends AppCompatActivity {
             Runnable youfailed = new Runnable() {
                 @Override
                 public void run(){
-                    battlePlayer.stop();
+                    WorldActivity.battlePlayer.stop();
                     failurePlayer.start();
                     ImageView battleimage = (ImageView) findViewById(R.id.battleimage);
                     battleimage.setImageResource(R.drawable.failure);
@@ -391,11 +395,11 @@ public class BattleActivity extends AppCompatActivity {
         }
 
         if(currentEnemyHP == 0){
-            battlePlayer.stop();
+            WorldActivity.battlePlayer.stop();
             victoryPlayer.start();
             ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
             enemyanimation.setImageResource(R.drawable.skull);
-            enemyanimation.setAlpha(.8F);
+            enemyanimation.setAlpha(.9F);
 
             Runnable skull = new Runnable() {
                 @Override
@@ -427,12 +431,11 @@ public class BattleActivity extends AppCompatActivity {
             h.postDelayed(youdidit, 2000);
             h.postDelayed(backtoworld, 4000);
         }
-
-        if(currentEnemyHP > 0 && currentHP > 0)
-            enableButtons();
     }
 
     public void blazeKick(View view) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        busy = true;
         disableButtons();
         magicPlayer.start();
         final ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
@@ -502,8 +505,10 @@ public class BattleActivity extends AppCompatActivity {
         h.postDelayed(r, 1000);
     }
     public void iceStrike(View view) {
-        magicPlayer.start();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        busy = true;
         disableButtons();
+        magicPlayer.start();
         ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
         enemyanimation.setImageResource(R.drawable.icecube);
         enemyanimation.setAlpha(.8F);
@@ -544,8 +549,10 @@ public class BattleActivity extends AppCompatActivity {
     }
 
     public void megaPunch(View view) {
-        punchPlayer.start();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        busy = true;
         disableButtons();
+        punchPlayer.start();
         final ImageView enemyanimation = (ImageView) findViewById(R.id.enemyanimation);
         enemyanimation.setImageResource(R.drawable.punch);
         enemyanimation.setAlpha(.8F);
@@ -612,6 +619,10 @@ public class BattleActivity extends AppCompatActivity {
     }
 
     public void goToWorld(View view) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        busy = true;
+        WorldActivity.battlePlayer.stop();
+        WorldActivity.battlePlayer.prepareAsync();
         booPlayer.start();
         final ImageView battleimage = (ImageView) findViewById(R.id.battleimage);
 
@@ -644,6 +655,7 @@ public class BattleActivity extends AppCompatActivity {
             public void run() {
                 booPlayer.stop();
                 finish();
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
             }
         };
         h.postDelayed(shake1,400);
@@ -686,17 +698,77 @@ public class BattleActivity extends AppCompatActivity {
         fleebutton.setEnabled(true);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(!busy){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+            busy = true;
+            WorldActivity.battlePlayer.stop();
+            WorldActivity.battlePlayer.prepareAsync();
+            booPlayer.start();
+            final ImageView battleimage = (ImageView) findViewById(R.id.battleimage);
+
+            Runnable shake1 = new Runnable() {
+                @Override
+                public void run() {
+                    battleimage.setPadding(0,0,60,0);
+                }
+            };
+            Runnable shake2 = new Runnable() {
+                @Override
+                public void run() {
+                    battleimage.setPadding(0,0,120,0);
+                }
+            };
+            Runnable shake3 = new Runnable() {
+                @Override
+                public void run() {
+                    battleimage.setPadding(0,0,180,0);
+                }
+            };
+            Runnable shake4 = new Runnable() {
+                @Override
+                public void run() {
+                    battleimage.setPadding(0,0,240,0);
+                }
+            };
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    booPlayer.stop();
+                    finish();
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+                }
+            };
+            h.postDelayed(shake1,400);
+            h.postDelayed(shake2,800);
+            h.postDelayed(shake3,1200);
+            h.postDelayed(shake4,1600);
+            h.postDelayed(r,2000);
+        }
+    }
+
     protected void onResume() {
         super.onResume();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            WorldActivity.battlePlayer.stop();
+            WorldActivity.battlePlayer.prepareAsync();
+
+        } else {
+            //It's an orientation change.
+        }
+    }
+
     protected void onStop() {
         super.onStop();
-        battlePlayer.stop();
         victoryPlayer.stop();
         failurePlayer.stop();
 
-        battlePlayer.reset();
         victoryPlayer.reset();
         failurePlayer.reset();
         punchPlayer.reset();
@@ -704,13 +776,11 @@ public class BattleActivity extends AppCompatActivity {
         booPlayer.reset();
         enemyPunchPlayer.reset();
 
-        battlePlayer.release();
         victoryPlayer.release();
         failurePlayer.release();
         punchPlayer.release();
         magicPlayer.release();
         booPlayer.release();
         enemyPunchPlayer.release();
-        finish();
     }
 }

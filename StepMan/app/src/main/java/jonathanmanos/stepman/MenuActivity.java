@@ -32,21 +32,21 @@ public class MenuActivity extends AppCompatActivity {
 
     public void goToProfile(View view){
         SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("firstTab", 1).apply();
+        mEditor.putInt("firstTab", 0).apply();
         Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
         startActivity(intent);
     }
 
     public void goToStats(View view){
         SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("firstTab", 2).apply();
+        mEditor.putInt("firstTab", 1).apply();
         Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
         startActivity(intent);
     }
 
     public void goToStepStats(View view){
         SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("firstTab", 3).apply();
+        mEditor.putInt("firstTab", 2).apply();
         Intent intent = new Intent(getApplicationContext(), MainTabbedActivity.class);
         startActivity(intent);
     }

@@ -1,11 +1,13 @@
 package jonathanmanos.stepman;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -112,6 +114,8 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabGravity(0);
+
 
         profile = this;
         stepCounterIntent = new Intent(this, StepCounterService.class);
@@ -124,6 +128,9 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
         }
 
         mPrefs = getSharedPreferences("label", 0);
+
+        mViewPager.setCurrentItem(mPrefs.getInt("firstTab",0), false);
+
         name = mPrefs.getString("name", "");
         color = mPrefs.getString("color", "");
         steps = mPrefs.getInt("steps", 0);
@@ -373,16 +380,16 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 double stepsPerMinute = steps / numberOfMins;
 
                 TextView stepsWeek = (TextView) rootView.findViewById(R.id.stepsperweek);
-                stepsWeek.setText("Steps per Week: " + df.format(stepsPerWeek));
+                stepsWeek.setText("Steps/Week: " + df.format(stepsPerWeek));
 
                 TextView stepsDay = (TextView) rootView.findViewById(R.id.stepsperday);
-                stepsDay.setText("Steps per Day: " + df.format(stepsPerDay));
+                stepsDay.setText("Steps/Day: " + df.format(stepsPerDay));
 
                 TextView stepsHour = (TextView) rootView.findViewById(R.id.stepsperhour);
-                stepsHour.setText("Steps per Hour: " + df.format(stepsPerHour));
+                stepsHour.setText("Steps/Hour: " + df.format(stepsPerHour));
 
                 TextView stepsMinute = (TextView) rootView.findViewById(R.id.stepsperminute);
-                stepsMinute.setText("Steps per Minute: " + df.format(stepsPerMinute));
+                stepsMinute.setText("Steps/Minute: " + df.format(stepsPerMinute));
 
                 double miles = (double) steps / (double) mileSteps;
 
@@ -395,13 +402,13 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 stepsMarathon.setText("Walked " + df.format(marathon) + " Marathons");
 
                 TextView stepsworld = (TextView) rootView.findViewById(R.id.stepsworld);
-                stepsworld.setText("Reached world: " + worldLevel);
+                stepsworld.setText("Reached World 1 Level: " + worldLevel);
 
                 return rootView;
             }
             else {
                 System.out.println("got here ;)");
-                View rootView = inflater.inflate(R.layout.fragment_main_tabbed, container, false);
+                View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
                 return rootView;
             }
         }
@@ -635,16 +642,16 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 double stepsPerMinute = steps / numberOfMinutes;
 
                 TextView stepsWeek = (TextView) findViewById(R.id.stepsperweek);
-                stepsWeek.setText("Steps per Week: " + df.format(stepsPerWeek));
+                stepsWeek.setText("Steps/Week: " + df.format(stepsPerWeek));
 
                 TextView stepsDay = (TextView) findViewById(R.id.stepsperday);
-                stepsDay.setText("Steps per Day: " + df.format(stepsPerDay));
+                stepsDay.setText("Steps/Day: " + df.format(stepsPerDay));
 
                 TextView stepsHour = (TextView) findViewById(R.id.stepsperhour);
-                stepsHour.setText("Steps per Hour: " + df.format(stepsPerHour));
+                stepsHour.setText("Steps/Hour: " + df.format(stepsPerHour));
 
                 TextView stepsMinute = (TextView) findViewById(R.id.stepsperminute);
-                stepsMinute.setText("Steps per Minute: " + df.format(stepsPerMinute));
+                stepsMinute.setText("Steps/Minute: " + df.format(stepsPerMinute));
 
                 double miles = (double) steps / (double) mileSteps;
 
@@ -657,7 +664,7 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
                 stepsMarathon.setText("Walked " + df.format(marathon) + " Marathons");
 
                 TextView stepsworld = (TextView) findViewById(R.id.stepsworld);
-                stepsworld.setText("Reached world: " + worldLevel);
+                stepsworld.setText("Reached World 1 Level: " + worldLevel);
             }
             catch(NullPointerException e){
                 System.out.println("NULLLLLL - not steps page");
@@ -668,63 +675,6 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
     public void onAccuracyChanged(Sensor sensor, int accuracy)
     {
 
-    }
-
-    protected void onResume() {
-
-        super.onResume();
-        firstTime = true;
-
-
-        stopService(stepCounterIntent);
-
-        getAllSavedValues();
-
-        difficultyValue = getDifficultyValue();
-
-        SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("difficultyValue", difficultyValue).apply();
-
-        mSensorManager.registerListener(this, mStepCounterSensor,
-                SensorManager.SENSOR_DELAY_FASTEST);
-
-        mSensorManager.registerListener(this, mStepDetectorSensor,
-                SensorManager.SENSOR_DELAY_FASTEST);
-
-        if(mPrefs.getBoolean("needToRecreate", false))
-            this.recreate();
-    }
-
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        firstTime = true;
-
-        getAllSavedValues();
-        difficultyValue = getDifficultyValue();
-
-        SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("difficultyValue", difficultyValue).apply();
-
-        if(mPrefs.getBoolean("needToRecreate", false))
-            this.recreate();
-    }
-
-    protected void onStop() {
-
-        super.onStop();
-        /*
-        SharedPreferences.Editor mEditor = mPrefs.edit();
-        mEditor.putInt("difficultyValue", difficultyValue);
-        mEditor.putInt("stepsAtLevelUp", stepsAtLevelUp);
-        mEditor.apply();
-        */
-
-        mSensorManager.unregisterListener(this, mStepCounterSensor);
-        mSensorManager.unregisterListener(this, mStepDetectorSensor);
-
-        startService(stepCounterIntent);
-        finish();
     }
 
     public void onClickAddHP(View view){
@@ -917,33 +867,47 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
 
     public void resetStatPoints(View view){
 
-        SharedPreferences.Editor mEditor = mPrefs.edit();
-        points += spentPoints;
-        spentPoints = 0;
-        mEditor.putInt("points", points);
-        mEditor.putInt("spentPoints", spentPoints);
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to reset your stat points?")
+                .setTitle("Reset Points")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences.Editor mEditor = mPrefs.edit();
+                        points += spentPoints;
+                        spentPoints = 0;
+                        mEditor.putInt("points", points);
+                        mEditor.putInt("spentPoints", spentPoints);
 
-        hp = 10 + level - 1;
-        strength = 10 + level - 1;
-        defense = 10 + level - 1;
-        magic = 10 + level - 1;
-        magicDef = 10 + level - 1;
-        speed = 10 + level - 1;
+                        hp = 10 + level - 1;
+                        strength = 10 + level - 1;
+                        defense = 10 + level - 1;
+                        magic = 10 + level - 1;
+                        magicDef = 10 + level - 1;
+                        speed = 10 + level - 1;
 
-        mEditor.putInt("hp", hp);
-        mEditor.putInt("strength", strength);
-        mEditor.putInt("defense", defense);
-        mEditor.putInt("magic", magic);
-        mEditor.putInt("magicDef", magicDef);
-        mEditor.putInt("speed", speed);
-        mEditor.apply();
+                        mEditor.putInt("hp", hp);
+                        mEditor.putInt("strength", strength);
+                        mEditor.putInt("defense", defense);
+                        mEditor.putInt("magic", magic);
+                        mEditor.putInt("magicDef", magicDef);
+                        mEditor.putInt("speed", speed);
+                        mEditor.apply();
 
-        TextView myStatPointView = (TextView)findViewById(R.id.statPoints);
-        myStatPointView.setText("Points: " + points);
+                        TextView myStatPointView = (TextView)findViewById(R.id.statPoints);
+                        myStatPointView.setText("Points: " + points);
 
-        updateAllStats();
+                        updateAllStats();
 
-        enableAllStatButtons();
+                        enableAllStatButtons();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
 
     }
 
@@ -1046,10 +1010,72 @@ public class MainTabbedActivity extends AppCompatActivity implements SensorEvent
         speed = mPrefs.getInt("speed", 10);
     }
 
-    public void setNeedToRecreate(boolean value){
-        needToRecreate = value;
+    protected void onResume() {
+
+        super.onResume();
+        firstTime = true;
+
+
+        stopService(stepCounterIntent);
+
+        getAllSavedValues();
+
+        difficultyValue = getDifficultyValue();
+
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("difficultyValue", difficultyValue).apply();
+
+        mSensorManager.registerListener(this, mStepCounterSensor,
+                SensorManager.SENSOR_DELAY_FASTEST);
+
+        mSensorManager.registerListener(this, mStepDetectorSensor,
+                SensorManager.SENSOR_DELAY_FASTEST);
+
+        if(mPrefs.getBoolean("needToRecreate", false))
+            this.recreate();
     }
 
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        firstTime = true;
+
+        getAllSavedValues();
+        difficultyValue = getDifficultyValue();
+
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("difficultyValue", difficultyValue).apply();
+
+        if(mPrefs.getBoolean("needToRecreate", false))
+            this.recreate();
+    }
+
+    protected void onStop() {
+
+        super.onStop();
+        /*
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("difficultyValue", difficultyValue);
+        mEditor.putInt("stepsAtLevelUp", stepsAtLevelUp);
+        mEditor.apply();
+        */
+
+        mSensorManager.unregisterListener(this, mStepCounterSensor);
+        mSensorManager.unregisterListener(this, mStepDetectorSensor);
+        startService(stepCounterIntent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            mSensorManager.unregisterListener(this, mStepCounterSensor);
+            mSensorManager.unregisterListener(this, mStepDetectorSensor);
+            startService(stepCounterIntent);
+        } else {
+            //It's an orientation change.
+        }
+    }
 
 }
 

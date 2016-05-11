@@ -1,32 +1,27 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:background="@drawable/pagebackground"
     tools:context="jonathanmanos.stepman.MainTabbedActivity$PlaceholderFragment">
 
-    <LinearLayout
+    <GridLayout
+        android:id="@+id/email_login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="?attr/actionBarSize">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:orientation="horizontal"
-            android:layout_margin="5pt">
+            android:layout_margin="10pt">
 
             <TextView
                 android:id="@+id/mystatlevelview"
                 android:text="Level: 1"
                 android:textSize="14pt"
-                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -35,31 +30,24 @@
                 android:id="@+id/statPoints"
                 android:text="Pts: "
                 android:textSize="12pt"
-                android:textColor="@color/black"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:orientation="vertical">
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
-            android:layout_margin="5pt">
+            android:background="@drawable/background"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
 
             <TextView
                 android:text="@string/hp"
                 android:textSize="12pt"
-                android:textColor="@color/black"
                 android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -98,9 +86,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -144,9 +131,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -190,9 +176,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -236,9 +221,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -282,9 +266,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/background"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -325,13 +308,12 @@
             </RelativeLayout>
         </LinearLayout>
 
-    </LinearLayout>
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_margin="10pt"
+            android:layout_marginBottom="5pt">
             <Button
                 android:id="@+id/buttonpointadjustor"
                 android:text="Adjust Points To Add: 1"
@@ -339,24 +321,35 @@
                 android:textSize="12pt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5pt"
+                android:layout_gravity="center"
                 android:clickable="true"
                 android:onClick="changePointSpendAmount"
                 android:enabled="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10pt"
+            android:layout_marginTop="0pt">
+
             <Button
                 android:text="Reset Points"
                 android:background="@drawable/reset_button2"
                 android:textSize="12pt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5pt"
+                android:layout_gravity="center"
                 android:clickable="true"
                 android:onClick="resetStatPoints"
                 android:enabled="true" />
 
         </LinearLayout>
-    </LinearLayout>
 
-</LinearLayout>
+
+
+
+    </GridLayout>
+
+</RelativeLayout>

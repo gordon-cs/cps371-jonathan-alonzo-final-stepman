@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#a33ccc</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bluebackground">#bbaaccff</color>
+    <color name="lightPurple">#aa66cc</color>
+    <color name="lightLessPurple">#aa55cc</color>
 
     <item name="black" type="color">#FF202020</item>
     <item name="gray" type="color">#FFc0c0c0</item>
     <item name="blue" type="color">#FF88AAE6</item>
+    <item name="bluehalf" type="color">#BB88AAE6</item>
     <item name="purple" type="color">#FFAA66CC</item>
     <item name="green" type="color">#FF99CC00</item>
     <item name="orange" type="color">#FFFFBB33</item>
@@ -18,14 +22,18 @@
     <item name="darkred" type="color">#FFCC0000</item>
     <item name="white" type="color">#FFFFFFFF</item>
     <item name="whiteGhost" type="color">#BBFFFFFF</item>
+    <item name="whiteGhostFake" type="color">#E2E2FF</item>
+
 
 
     <integer-array name="androidcolors">
         <item>@color/whiteGhost</item>
+        <item>@color/whiteGhostFake</item>
         <item>@color/white</item>
         <item>@color/black</item>
         <item>@color/gray</item>
         <item>@color/blue</item>
+        <item>@color/bluehalf</item>
         <item>@color/purple</item>
         <item>@color/green</item>
         <item>@color/orange</item>

@@ -34,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         newNameView.setText(name);
 
         spinnerColor = (Spinner)findViewById(R.id.spinnerColor);
-        String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Liu"};
+        String[] colors = new String[]{"Black", "Red", "Green", "Blue", "Luigi"};
         ArrayAdapter<String> adapterColor = new ArrayAdapter<String>(SettingsActivity.this,
                 android.R.layout.simple_spinner_item,colors);
 
@@ -70,32 +70,67 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void saveSettings(View view) {
 
-        SharedPreferences.Editor mEditor = mPrefs.edit();
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to save these settings?")
+                .setTitle("Save Settings")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences.Editor mEditor = mPrefs.edit();
 
-        AutoCompleteTextView newNameView = (AutoCompleteTextView) findViewById(R.id.name);
-        String newName = newNameView.getText().toString();
-        String color = spinnerColor.getSelectedItem().toString();
-        String difficulty = spinnerDifficulty.getSelectedItem().toString();
+                        AutoCompleteTextView newNameView = (AutoCompleteTextView) findViewById(R.id.name);
+                        String newName = newNameView.getText().toString();
+                        String color = spinnerColor.getSelectedItem().toString();
+                        String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
-        if (!mPrefs.getString("difficulty", "").contentEquals(difficulty))
-        {
-            System.out.println("changing steps at level up to: " + mPrefs.getInt("steps", 0));
-            MainTabbedActivity.stepsAtLevelUp = mPrefs.getInt("steps", 0);
-            mEditor.putInt("stepsAtLevelUp", MainTabbedActivity.stepsAtLevelUp);
-            mEditor.apply();
-        }
+                        if (!mPrefs.getString("difficulty", "").contentEquals(difficulty))
+                        {
+                            System.out.println("changing steps at level up to: " + mPrefs.getInt("steps", 0));
+                            MainTabbedActivity.stepsAtLevelUp = mPrefs.getInt("steps", 0);
+                            mEditor.putInt("stepsAtLevelUp", MainTabbedActivity.stepsAtLevelUp);
+                            mEditor.apply();
+                        }
 
-        MainTabbedActivity.name = newName;
-        MainTabbedActivity.color = color;
-        MainTabbedActivity.difficulty = difficulty;
-        MainTabbedActivity.stepsAtLevelUp = mPrefs.getInt("steps", 0);
+                        MainTabbedActivity.name = newName;
+                        MainTabbedActivity.color = color;
+                        MainTabbedActivity.difficulty = difficulty;
+                        MainTabbedActivity.stepsAtLevelUp = mPrefs.getInt("steps", 0);
 
-        mEditor.putString("name", newName);
-        mEditor.putString("color", color);
-        mEditor.putString("difficulty", difficulty);
-        mEditor.commit();
+                        mEditor.putString("name", newName);
+                        mEditor.putString("color", color);
+                        mEditor.putString("difficulty", difficulty);
+                        mEditor.commit();
 
-        finish();
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+    }
+
+    public void restartGame(View view){
+
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to restart the game from level 1?")
+                .setTitle("Restart Game")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        mPrefs.edit().putInt("worldLevel",1).apply();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 
     public void deleteAccount(View view){

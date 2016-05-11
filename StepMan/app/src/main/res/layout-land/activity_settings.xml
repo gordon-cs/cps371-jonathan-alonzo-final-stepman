@@ -35,7 +35,7 @@
                 android:text="Change name: "/>
 
         <RelativeLayout
-            android:background="@drawable/backgroundworld">
+            android:background="@drawable/background">
             <AutoCompleteTextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
@@ -58,7 +58,8 @@
 
 
             <RelativeLayout
-                android:background="@drawable/backgroundworld"
+                android:background="@drawable/background"
+                android:backgroundTint="@color/gray"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -77,7 +78,8 @@
                 android:layout_margin="5pt"/>
 
         <RelativeLayout
-            android:background="@drawable/backgroundworld"
+            android:background="@drawable/background"
+            android:backgroundTint="@color/gray"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

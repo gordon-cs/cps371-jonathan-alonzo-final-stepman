@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,82 +6,96 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/pagebackground"
+    android:orientation="vertical"
     tools:context="jonathanmanos.stepman.MainTabbedActivity$PlaceholderFragment">
 
-    <GridLayout
-        android:id="@+id/email_login_form"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/mynameview"
-            android:text="Welcome, "
-            android:textSize="14pt"
-            android:layout_marginTop="5pt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10pt">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4pt"
+            android:layout_weight="13"
+            android:background="@drawable/box_shadow"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageviewstepman"
-                android:layout_width="wrap_content"
-                android:layout_height="50pt"
-                android:src="@drawable/stepmanrunning"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"/>
+            <TextView
+                android:id="@+id/mynameview"
+                android:text="Welcome, "
+                android:textSize="14pt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/mylevelview"
-            android:text="Level: 1"
-            android:textSize="20pt"
-            android:layout_marginTop="5pt"
-            android:layout_marginBottom="5pt"
-            android:background="@drawable/background"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/mystepview"
-            android:text="Steps: 0"
-            android:textSize="16pt"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
             android:layout_marginTop="5pt"
-            android:layout_marginBottom="5pt"
-            android:background="@drawable/background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageviewstepman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/stepmanrunning" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical">
+    <TextView
+        android:id="@+id/mylevelview"
+        android:text="Level: 1"
+        android:textSize="20pt"
+        android:layout_marginTop="5pt"
+        android:background="@drawable/box_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/mysteptillview"
-            android:text="Steps till level up: 0"
-            android:textSize="12pt"
-            android:layout_marginTop="5pt"
-            android:layout_marginBottom="5pt"
-            android:background="@drawable/background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/mystepview"
+        android:text="Steps: 0"
+        android:textSize="16pt"
+        android:layout_marginTop="5pt"
+        android:background="@drawable/box_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/mydifficultyview"
-            android:text="Difficulty: Easy"
-            android:textSize="12pt"
-            android:layout_marginTop="5pt"
-            android:layout_marginBottom="5pt"
-            android:background="@drawable/background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/mysteptillview"
+        android:text="Steps till level up: 0"
+        android:textSize="12pt"
+        android:layout_marginTop="5pt"
+        android:background="@drawable/box_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
+    <TextView
+        android:id="@+id/mydifficultyview"
+        android:text="Difficulty: Easy"
+        android:textSize="12pt"
+        android:layout_marginTop="5pt"
+        android:background="@drawable/box_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
+        </LinearLayout>
 
-    </GridLayout>
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -17,14 +17,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/stepmanrunning"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,19 +39,16 @@
         <activity
             android:name=".MainTabbedActivity"
             android:label="@string/title_activity_main_tabbed"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MenuActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MenuActivity"
             android:label="Menu"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".SettingsActivity"
             android:label="StepMan"
-            android:parentActivityName=".MainTabbedActivity"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".MainTabbedActivity">
 
             <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
@@ -61,12 +58,10 @@
         <activity
             android:name=".WorldActivity"
             android:parentActivityName=".MenuActivity"
-            android:screenOrientation="portrait"
             />
         <activity
             android:name=".BattleActivity"
-            android:parentActivityName=".WorldActivity"
-            android:screenOrientation="portrait"/>
+            android:parentActivityName=".WorldActivity"/>
     </application>
 
 </manifest>
