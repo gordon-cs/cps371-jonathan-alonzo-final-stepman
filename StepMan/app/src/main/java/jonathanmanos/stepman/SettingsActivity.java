@@ -48,6 +48,8 @@ public class SettingsActivity extends AppCompatActivity {
             spinnerColor.setSelection(2);
         else if(color.contentEquals("Blue"))
             spinnerColor.setSelection(3);
+        else if(color.contentEquals("Luigi"))
+            spinnerColor.setSelection(4);
 
         spinnerDifficulty = (Spinner)findViewById(R.id.spinnerDifficulty);
         String[] difficulties = new String[]{"Easy", "Normal", "Hard", "Impossible"};

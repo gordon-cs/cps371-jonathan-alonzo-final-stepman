@@ -15,10 +15,10 @@
         android:paddingBottom="?attr/actionBarSize">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/box_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="20"
+            android:background="@drawable/box_settings"
             android:orientation="horizontal"
             android:layout_margin="5pt">
 
@@ -43,64 +43,64 @@
         </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="9"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
-            android:layout_margin="5pt">
+            android:background="@drawable/box_settings"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginBottom="5pt">
 
             <TextView
                 android:text="@string/hp"
                 android:textSize="12pt"
-                android:textColor="@color/black"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statHP"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
-            <Button
-                android:id="@+id/buttonHP"
-                android:text="+"
-                android:textColor="@color/black"
-                android:background="@drawable/button"
-                android:textSize="12pt"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:onClick="onClickAddHP"
-                android:enabled="false" />
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
+                <Button
+                    android:id="@+id/buttonHP"
+                    android:text="+"
+                    android:textColor="@color/black"
+                    android:background="@drawable/button"
+                    android:textSize="12pt"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="onClickAddHP"
+                    android:enabled="false" />
             </RelativeLayout>
         </LinearLayout>
 
-
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/box_settings"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -108,23 +108,24 @@
             <TextView
                 android:text="@string/strength"
                 android:textSize="12pt"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statStrength"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
                 <Button
                     android:id="@+id/buttonStrength"
                     android:text="+"
@@ -140,13 +141,12 @@
                     android:enabled="false" />
             </RelativeLayout>
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/box_settings"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -154,23 +154,24 @@
             <TextView
                 android:text="@string/defense"
                 android:textSize="12pt"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statDefense"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
                 <Button
                     android:id="@+id/buttonDefense"
                     android:text="+"
@@ -188,11 +189,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/box_settings"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -200,23 +201,24 @@
             <TextView
                 android:text="@string/magic"
                 android:textSize="12pt"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statMagic"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
                 <Button
                     android:id="@+id/buttonMagic"
                     android:text="+"
@@ -232,13 +234,12 @@
                     android:enabled="false" />
             </RelativeLayout>
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/box_settings"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -246,23 +247,24 @@
             <TextView
                 android:text="@string/magicDef"
                 android:textSize="12pt"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statMagicDef"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
                 <Button
                     android:id="@+id/buttonMagicDef"
                     android:text="+"
@@ -278,13 +280,12 @@
                     android:enabled="false" />
             </RelativeLayout>
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/box_shadow"
+            android:background="@drawable/box_settings"
             android:layout_marginLeft="5pt"
             android:layout_marginRight="5pt"
             android:layout_marginBottom="5pt">
@@ -292,23 +293,24 @@
             <TextView
                 android:text="@string/speed"
                 android:textSize="12pt"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"/>
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/statSpeed"
                 android:text="10"
                 android:textSize="12pt"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:layout_weight="14"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5px"
+                android:layout_marginTop="4px"
+                android:layout_weight="18">
                 <Button
                     android:id="@+id/buttonSpeed"
                     android:text="+"
@@ -328,9 +330,9 @@
     </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="16"
             android:orientation="vertical">
             <Button
                 android:id="@+id/buttonpointadjustor"
@@ -340,7 +342,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="5pt"
+                android:layout_margin="4pt"
                 android:clickable="true"
                 android:onClick="changePointSpendAmount"
                 android:enabled="true" />
@@ -351,7 +353,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="5pt"
+                android:layout_margin="4pt"
                 android:clickable="true"
                 android:onClick="resetStatPoints"
                 android:enabled="true" />

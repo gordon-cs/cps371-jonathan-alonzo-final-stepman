@@ -15,7 +15,17 @@ public class WorldActivity extends AppCompatActivity {
     private static int worldLevel;
     public static boolean needToRecreate;
     private static final float alphaValue = .5F;
+
     public static MediaPlayer battlePlayer;
+    public static MediaPlayer victoryPlayer;
+    public static MediaPlayer failurePlayer;
+    public static MediaPlayer punchPlayer;
+    public static MediaPlayer magicPlayer;
+    public static MediaPlayer booPlayer;
+    public static MediaPlayer enemyPunchPlayer;
+
+    public static int currentHP;
+    public static int currentEnemyHP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +34,12 @@ public class WorldActivity extends AppCompatActivity {
 
         needToRecreate = false;
         battlePlayer = MediaPlayer.create(this, R.raw.battle);
+        victoryPlayer = MediaPlayer.create(this, R.raw.victory);
+        failurePlayer = MediaPlayer.create(this, R.raw.failure);
+        punchPlayer = MediaPlayer.create(this, R.raw.punches);
+        magicPlayer = MediaPlayer.create(this, R.raw.fireball);
+        booPlayer = MediaPlayer.create(this, R.raw.boo);
+        enemyPunchPlayer = MediaPlayer.create(this, R.raw.punches);
 
         mPrefs = getSharedPreferences("label", 0);
         worldLevel = mPrefs.getInt("worldLevel", 1);
@@ -35,59 +51,77 @@ public class WorldActivity extends AppCompatActivity {
     public void goToBattle1(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 1;
+        setLevel(1);
+        setNewLevel();
     }
     public void goToBattle2(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 2;
+        setLevel(2);
+        setNewLevel();
     }
     public void goToBattle3(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 3;
+        setLevel(3);
+        setNewLevel();
     }
 
     public void goToBattle4(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 4;
+        setLevel(4);
+        setNewLevel();
     }
 
     public void goToBattle5(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 5;
+        setLevel(5);
+        setNewLevel();
     }
 
     public void goToBattle6(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 6;
+        setLevel(6);
+        setNewLevel();
     }
 
     public void goToBattle7(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 7;
+        setLevel(7);
+        setNewLevel();
     }
 
     public void goToBattle8(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 8;
+        setLevel(8);
+        setNewLevel();
     }
 
     public void goToBattle9(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 9;
+        setLevel(9);
+        setNewLevel();
     }
 
     public void goToBattle10(View view) {
         Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
         startActivity(intent);
-        BattleActivity.level = 10;
+        setLevel(10);
+        setNewLevel();
+    }
+
+    private void setLevel(int i){
+        BattleActivity.level = i;
+    }
+
+    private void setNewLevel(){
+        BattleActivity.newLevel = true;
     }
 
     private void disableButtons(){

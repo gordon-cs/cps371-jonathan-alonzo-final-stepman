@@ -11,10 +11,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40pt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -69,9 +69,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="5pt"
-            android:layout_weight="1"
+            android:layout_weight="14"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/battlepopup"
@@ -92,66 +92,59 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="8pt">
-
-
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="5pt"
-            android:layout_marginBottom="8pt">
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/playerlayer"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/battleimage"
                     android:layout_width="match_parent"
-                    android:layout_height="120pt"
-                    android:layout_marginTop="20pt"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/stepmanrunning"/>
                 <ImageView
                     android:id="@+id/myanimation"
                     android:layout_width="match_parent"
-                    android:layout_height="120pt"
-                    android:layout_marginTop="20pt"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/enemylayer"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <ImageView
                     android:id="@+id/battleenemyimage"
                     android:layout_width="match_parent"
-                    android:layout_height="120pt"
-                    android:layout_marginBottom="40pt"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/stepmanrunning"/>
                 <ImageView
                     android:id="@+id/enemyanimation"
                     android:layout_width="match_parent"
-                    android:layout_height="120pt"
-                    android:layout_marginBottom="40pt"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
             </RelativeLayout>
-
-
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="12"
+            android:padding="2pt"
             android:orientation="horizontal"
             android:background="@drawable/box_shadow">
 
@@ -159,33 +152,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
                 android:orientation="vertical">
                 <Button
                     android:id="@+id/blazekickbutton"
-                    android:text="Blaze\nKick"
-                    android:textSize="12pt"
+                    android:text="Blaze Kick"
+                    android:textSize="10pt"
                     android:background="@drawable/worldbutton"
                     android:layout_margin="2pt"
-                    android:layout_marginLeft="4pt"
-                    android:layout_marginTop="4pt"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:onClick="blazeKick"
                     android:clickable="true"
                     android:enabled="true"/>
                 <Button
                     android:id="@+id/icestrikebutton"
-                    android:text="Ice\nStrike"
-                    android:textSize="12pt"
+                    android:text="Ice Strike"
+                    android:textSize="10pt"
                     android:layout_weight="1"
                     android:layout_margin="2pt"
-                    android:layout_marginLeft="4pt"
-                    android:layout_marginBottom="4pt"
                     android:background="@drawable/worldbutton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:onClick="iceStrike"
                     android:clickable="true"
                     android:enabled="true"/>
@@ -198,29 +186,25 @@
                 android:orientation="vertical">
                 <Button
                     android:id="@+id/megapunchbutton"
-                    android:text="Mega\npunch"
-                    android:textSize="12pt"
+                    android:text="Mega Punch"
+                    android:textSize="10pt"
                     android:background="@drawable/worldbutton"
                     android:layout_weight="1"
                     android:layout_margin="2pt"
-                    android:layout_marginRight="4pt"
-                    android:layout_marginTop="4pt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:onClick="megaPunch"
                     android:clickable="true"
                     android:enabled="true"/>
                 <Button
                     android:id="@+id/fleebutton"
-                    android:text="Run\nAway"
-                    android:textSize="12pt"
+                    android:text="Run Away"
+                    android:textSize="10pt"
                     android:layout_weight="1"
                     android:layout_margin="2pt"
-                    android:layout_marginRight="4pt"
-                    android:layout_marginBottom="4pt"
                     android:background="@drawable/worldbutton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="fill_parent"
                     android:onClick="goToWorld"
                     android:clickable="true"
                     android:enabled="true"/>
